@@ -222,9 +222,10 @@ var color, subjecttxt, subject, grade, unit
 			.then(response => response.text())
 			.then(data => {
 			document.getElementById('page5').innerHTML = data;
-			
-			await delay(1000);
-			console.log(colors[0])
+			setTimeout(() => {
+  				console.log("This runs after 2 seconds");
+				console.log(colors[0])
+			}, 2000);
 		})
 			.catch(error => {
 			console.error("Error loading lesson:", error);
@@ -248,4 +249,5 @@ var color, subjecttxt, subject, grade, unit
 </script>
 </body>
 </html>
+
 
