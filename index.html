@@ -210,7 +210,8 @@ var color, subjecttxt, subject, grade, unit
 			if (heading) heading.textContent = subjecttxt + ", Grade " + grade + ", Unit " + unit;
 			console.log(subject, grade, unit)
 		}else if (pageId == "page5"){
-			openlesson(`${subject}${grade}${unit}`+lesson+'.html')
+			openLesson(`${subject}${grade}${unit}`+lesson+'.html')
+			//openlesson(`${subject}${grade}${unit}`+lesson+'.html')
 		}
 	}
 	function back(pageId){
@@ -246,10 +247,10 @@ var color, subjecttxt, subject, grade, unit
 	}
 	const lessonFiles = [1811];
 	for (let i = 1; i <= 320; i++) {
-		lessonFiles.push(`lesson${i}.html`);
+		lessonFiles.push(`lesson${i}`);
 	}
 	function openLesson(file) {
-	fetch(`lessons/${file}`)
+	fetch(`lessons/${file + '.html'}`)
 	.then(response => {
 	if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 	return response.text();
