@@ -93,6 +93,62 @@
 		background-color: #FF0040;
 	}
 </style>
+<script>
+const colors = ["#ff706a","#61f95c","#599aea","#ffed50"]
+var color, subjecttxt, subject, grade, unit
+	function showPage(pageId, back, lesson) {
+		const pages = document.querySelectorAll('.page');
+		pages.forEach(page => page.classList.remove('active'));
+		document.getElementById(pageId).classList.add('active');
+		if (pageId == "page2" && back != 1){
+			const heading = document.getElementById("page2text");
+			const itema = document.querySelectorAll('.item2');
+			itema.forEach(item => item.style.backgroundColor = color);
+			const itemb = document.querySelectorAll('.item3');
+			itemb.forEach(item => item.style.backgroundColor = color);
+			if (heading) heading.textContent = subjecttxt;
+		}else if (pageId == "page3" && back != 1){
+			const heading = document.getElementById("page3text");
+			if (heading) heading.textContent = "Grade " + grade;
+		}else if (pageId == "page4" && back != 1){
+			const heading = document.getElementById("page4text");
+			if (heading) heading.textContent = subjecttxt + ", Grade " + grade + ", Unit " + unit;
+			console.log(subject, grade, unit)
+		}else if (pageId == "page5"){
+			openlesson(`${subject}${grade}${unit}`+lesson+'.html')
+		}
+	}
+	function back(pageId){
+		showPage(pageId,1)
+	}
+	function openlesson(file){
+		fetch(`lessons/${file}`)
+			.then(response => response.text())
+			.then(data => {
+			document.getElementById('page5').innerHTML = data;
+		})
+			.catch(error => {
+			console.error("Error loading lesson:", error);
+		});
+	}
+	function select(id){
+		const options = ["English","Science","Math","History",8,9,10,11,1,2,3,4,5]
+		if (id <= 3){
+		subject = id+1
+		subjecttxt = options[id]
+		color = colors[id]
+		showPage("page2", 0)
+		}else if(id <= 7){
+		grade = options[id]
+		showPage("page3", 0)
+		}else if(id <= 12){
+		unit = options[id]
+		showPage("page4", 0)
+		}
+	}
+	function sendmsg(msg){
+		console.log("test")
+</script>
 </head>
 <body>
 	<div id="page1" class="page active">
@@ -189,65 +245,5 @@
 	</div>
 	<div id="page5" class="page">
 	</div>
-<script>
-const colors = ["#ff706a","#61f95c","#599aea","#ffed50"]
-var color, subjecttxt, subject, grade, unit
-	function showPage(pageId, back, lesson) {
-		const pages = document.querySelectorAll('.page');
-		pages.forEach(page => page.classList.remove('active'));
-		document.getElementById(pageId).classList.add('active');
-		if (pageId == "page2" && back != 1){
-			const heading = document.getElementById("page2text");
-			const itema = document.querySelectorAll('.item2');
-			itema.forEach(item => item.style.backgroundColor = color);
-			const itemb = document.querySelectorAll('.item3');
-			itemb.forEach(item => item.style.backgroundColor = color);
-			if (heading) heading.textContent = subjecttxt;
-		}else if (pageId == "page3" && back != 1){
-			const heading = document.getElementById("page3text");
-			if (heading) heading.textContent = "Grade " + grade;
-		}else if (pageId == "page4" && back != 1){
-			const heading = document.getElementById("page4text");
-			if (heading) heading.textContent = subjecttxt + ", Grade " + grade + ", Unit " + unit;
-			console.log(subject, grade, unit)
-		}else if (pageId == "page5"){
-			openlesson(`${subject}${grade}${unit}`+lesson+'.html')
-		}
-	}
-	function back(pageId){
-		showPage(pageId,1)
-	}
-	function openlesson(file){
-		fetch(`lessons/${file}`)
-			.then(response => response.text())
-			.then(data => {
-			document.getElementById('page5').innerHTML = data;
-			setTimeout(() => {
-  				console.log("This runs after 2 seconds");
-				console.log(colors[0])
-			}, 2000);
-		})
-			.catch(error => {
-			console.error("Error loading lesson:", error);
-		});
-	}
-	function select(id){
-		const options = ["English","Science","Math","History",8,9,10,11,1,2,3,4,5]
-		if (id <= 3){
-		subject = id+1
-		subjecttxt = options[id]
-		color = colors[id]
-		showPage("page2", 0)
-		}else if(id <= 7){
-		grade = options[id]
-		showPage("page3", 0)
-		}else if(id <= 12){
-		unit = options[id]
-		showPage("page4", 0)
-		}
-	}
-</script>
 </body>
 </html>
-
-
