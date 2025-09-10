@@ -247,10 +247,10 @@ var color, subjecttxt, subject, grade, unit
 	}
 	const lessonFiles = [1811];
 	for (let i = 1; i <= 320; i++) {
-		lessonFiles.push(`lesson${i}`);
+		lessonFiles.push(`lesson${i}.html`);
 	}
 	function openLesson(file) {
-	fetch(`lessons/${file + '.html'}`)
+	fetch(`lessons/${file}`)
 	.then(response => {
 	if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 	return response.text();
