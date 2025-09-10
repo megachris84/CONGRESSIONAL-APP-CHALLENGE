@@ -244,6 +244,26 @@ var color, subjecttxt, subject, grade, unit
 		showPage("page4", 0)
 		}
 	}
+	const lessonFiles = [1811];
+	for (let i = 1; i <= 320; i++) {
+		lessonFiles.push(`lesson${i}.html`);
+	}
+	function openLesson(file) {
+	fetch(`lessons/${file}`)
+	.then(response => {
+	if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+	return response.text();
+	})
+	.then(data => {
+	document.getElementById('page5').innerHTML = data;
+	if (typeof runLessonScripts === 'function') {
+	runLessonScripts();
+	}
+    })
+    .catch(error => {
+      console.error("Error loading lesson:", error);
+    });
+}
 </script>
 </body>
 </html>
