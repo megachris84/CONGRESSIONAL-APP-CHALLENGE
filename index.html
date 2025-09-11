@@ -141,6 +141,7 @@
 	.h1 {
 		max-width: 90%;
 		word-wrap: break-word;
+		font-size: 5vw;
 	}
 </style>
 </head>
@@ -302,7 +303,15 @@
 	</div>
 	</div>
 <script>
-const lessons = []
+const lessons = {
+  3811: {
+    type: "graph",
+    data: [1, 2, 3, 4],
+    question: "What is the slope of this graph?",
+    answers: [1,3,5],
+	correctans: 2
+  }
+}
 const titles = {
   1811: "English grade eight unit one lesson one",
   1812: "English grade eight unit one lesson two",
@@ -387,10 +396,95 @@ const titles = {
   4852: "History grade eight unit five lesson two",
   4853: "History grade eight unit five lesson three",
   4854: "History grade eight unit five lesson four",
+  
+  
+  1911: "English grade nine unit one lesson one",
+  1912: "English grade eight unit one lesson two",
+  1913: "English grade nine unit one lesson three",
+  1914: "English grade nine unit one lesson four",
+  1921: "English grade nine unit two lesson one",
+  1922: "English grade nine unit two lesson two",
+  1923: "English grade nine unit two lesson three",
+  1924: "English grade nine unit two lesson four",
+  1931: "English grade nine unit three lesson one",
+  1932: "English grade nine unit three lesson two",
+  1933: "English grade nine unit three lesson three",
+  1934: "English grade nine unit three lesson four",
+  1941: "English grade nine unit four lesson one",
+  1942: "English grade nine unit four lesson two",
+  1943: "English grade nine unit four lesson three",
+  1944: "English grade nine unit four lesson four",
+  1951: "English grade nine unit five lesson one",
+  1952: "English grade nine unit five lesson two",
+  1953: "English grade nine unit five lesson three",
+  1954: "English grade nine unit five lesson four",
+
+  2911: "Science grade nine unit one lesson one",
+  2912: "Science grade nine unit one lesson two",
+  2913: "Science grade nine unit one lesson three",
+  2914: "Science grade nine unit one lesson four",
+  2921: "Science grade nine unit two lesson one",
+  2922: "Science grade nine unit two lesson two",
+  2923: "Science grade nine unit two lesson three",
+  2924: "Science grade nine unit two lesson four",
+  2931: "Science grade nine unit three lesson one",
+  2932: "Science grade nine unit three lesson two",
+  2933: "Science grade nine unit three lesson three",
+  2934: "Science grade nine unit three lesson four",
+  2941: "Science grade nine unit four lesson one",
+  2942: "Science grade nine unit four lesson two",
+  2943: "Science grade nine unit four lesson three",
+  2944: "Science grade nine unit four lesson four",
+  2951: "Science grade nine unit five lesson one",
+  2952: "Science grade nine unit five lesson two",
+  2953: "Science grade nine unit five lesson three",
+  2954: "Science grade nine unit five lesson four",
+
+  3911: "Slope, Slope is the rate of change for a straight line on a graph. Slope is the Rise over Run. One example of slope could be 3/4 Rise(up) three Run(over) four.",
+  3912: "Y = MX + B, This is slope-intercept form. Y is the Y value on the graph or table. X is the X value on the graph or table. M is the slope of the line. B is the Y-intercept of the line(Y Value when X is equal to 0). Example Y = 2X + 1. The slope goes up 2 over 1 (Rise over Run) and when x is equal to 0 y is 1. ",
+  3913: "Math grade nine unit one lesson three",
+  3914: "Math grade nine unit one lesson four",
+  3921: "Math grade nine unit two lesson one",
+  3922: "Math grade nine unit two lesson two",
+  3923: "Math grade nine unit two lesson three",
+  3924: "Math grade nine unit two lesson four",
+  3931: "Math grade nine unit three lesson one",
+  3932: "Math grade nine unit three lesson two",
+  3933: "Math grade nine unit three lesson three",
+  3934: "Math grade nine unit three lesson four",
+  3941: "Math grade nine unit four lesson one",
+  3942: "Math grade nine unit four lesson two",
+  3943: "Math grade nine unit four lesson three",
+  3944: "Math grade nine unit four lesson four",
+  3951: "Math grade nine unit five lesson one",
+  3952: "Math grade nine unit five lesson two",
+  3953: "Math grade nine unit five lesson three",
+  3954: "Math grade nine unit five lesson four",
+  
+  4911: "History grade nine unit one lesson one",
+  4912: "History grade nine unit one lesson two",
+  4913: "History grade nine unit one lesson three",
+  4914: "History grade nine unit one lesson four",
+  4921: "History grade nine unit two lesson one",
+  4922: "History grade nine unit two lesson two",
+  4923: "History grade nine unit two lesson three",
+  4924: "History grade nine unit two lesson four",
+  4931: "History grade nine unit three lesson one",
+  4932: "History grade nine unit three lesson two",
+  4933: "History grade nine unit three lesson three",
+  4934: "History grade nine unit three lesson four",
+  4941: "History grade nine unit four lesson one",
+  4942: "History grade nine unit four lesson two",
+  4943: "History grade nine unit four lesson three",
+  4944: "History grade nine unit four lesson four",
+  4951: "History grade nine unit five lesson one",
+  4952: "History grade nine unit five lesson two",
+  4953: "History grade nine unit five lesson three",
+  4954: "History grade nine unit five lesson four",
 };
 
 const colors = ["#ff706a","#61f95c","#599aea","#ffed50"]
-var color, subjecttxt, subject, grade, unit
+var temp, correctans, answers, color, subjecttxt, subject, grade, unit
 	function showPage(pageId, back, lesson) {
 		const pages = document.querySelectorAll('.page');
 		pages.forEach(page => page.classList.remove('active'));
@@ -412,7 +506,10 @@ var color, subjecttxt, subject, grade, unit
 		}else if (pageId == "page5"){
 			const heading = document.getElementById("page5text");
 			if (heading) heading.textContent = titles[`${subject}${grade}${unit}${lesson}`];
-			loadquestion("type","data","question","canvasNum")
+			temp = lessons[`${subject}${grade}${unit}${lesson}`]
+			answers = temp.answers
+			correctans = temp.correctans
+			loadquestion(temp.type ,temp.data ,temp.question ,1)
 		}
 	}
 	function back(pageId){
@@ -439,6 +536,14 @@ var color, subjecttxt, subject, grade, unit
 	//question
 	var selected = document.getElementById("canvas1");
 	if (selected) selected.style.backgroundColor = "red";
+	selected = document.getElementById("c"+canvasNum+"qus");
+	if (selected) selected.textContent = question;
+	selected = document.getElementById("c"+canvasNum+"ans1");
+	if (selected) selected.textContent = answers[0];
+	selected = document.getElementById("c"+canvasNum+"ans2");
+	if (selected) selected.textContent = answers[1];
+	selected = document.getElementById("c"+canvasNum+"ans3");
+	if (selected) selected.textContent = answers[2];
 	}
 </script>
 </body>
