@@ -39,7 +39,18 @@
 		align-items: center;
 		text-align: center;
 		padding: 0 16px; 
-		font-size: clamp(16px, 5vw, 32px);
+		font-size: 24px;
+	}
+	.top2 {
+		height: 25vh;
+		width: 100vw;
+		background-color: white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		padding: 0 8px; 
+		font-size: 13px;
 	}
 	.item,.item2,.item3,.item4,.back {
 		width: 98vw;
@@ -104,40 +115,44 @@
 		border-radius: 4px;
     }
 	.container {
-      height: 50%;
-      width: 100%;
-      padding: 8px;
-      display: flex;
+		height: 50%;
+		width: 100%;
+		padding: 8px;
+		display: flex;
     }
     .left {
-      background-color: blue;
-      width: 50%;
-      height: 100%;
-      border-radius: 4px;
+		background-color: blue;
+		width: 50%;
+		height: 100%;
+		border-radius: 4px;
     }
     .right {
-      width: 50%;
-      height: 100%;
-      padding-left: 8px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+		width: 50%;
+		height: 100%;
+		padding-left: 8px;
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
     }
     .top-right {
-      height: 33.33%;
-      background-color: #ccc;
-      border-radius: 4px;
+		height: 33.33%;
+		background-color: #ccc;
+		border-radius: 4px;
+		text-align: center;
+		font-size: 16px;
     }
     .bottom-right {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
     }
     .answer-box {
-      flex: 1;
-      background-color: #eee;
-      border-radius: 4px;
+		flex: 1;
+		background-color: #eee;
+		border-radius: 4px;
+		text-align: center;
+		font-size: 16px;
     }
 	.h1 {
 		max-width: 90%;
@@ -240,7 +255,7 @@
 		</div>
 	</div>
 	<div id="page5" class="page">
-	<div class="top">
+	<div class="top2">
 		<h1 id="page5text"></h1>
 	</div>
 	<div class="back" onclick="back('page4')">
@@ -249,55 +264,55 @@
 	<div class="container">
 		<div id="c1cont" class="left"></div>
 		<div class="right">
-			<div id="c1qus" class="top-right"></div>
+			<div class="top-right"><h1 id="c1qus"></h1></div>
 			<div class="bottom-right">
-				<div id="c1ans1" class="answer-box"></div>
-				<div id="c1ans2" class="answer-box"></div>
-				<div id="c1ans3" class="answer-box"></div>
+				<div class="answer-box"><h1 id="c1ans1"></h1></div>
+				<div class="answer-box"><h1 id="c1ans2"></h1></div>
+				<div class="answer-box"><h1 id="c1ans3"></h1></div>
 			</div>
 		</div>
 	</div>
 	<div class="container">
 		<div id="c2cont" class="left"></div>
 		<div class="right">
-			<div id="c2qus" class="top-right"></div>
+			<div class="top-right"><h1 id="c2qus"></h1></div>
 			<div class="bottom-right">
-				<div id="c2ans1" class="answer-box"></div>
-				<div id="c2ans2" class="answer-box"></div>
-				<div id="c2ans3" class="answer-box"></div>
+				<div class="answer-box"><h1 id="c2ans1"></h1></div>
+				<div class="answer-box"><h1 id="c2ans2"></h1></div>
+				<div class="answer-box"><h1 id="c2ans3"></h1></div>
 			</div>
 		</div>
 	</div>
 	<div class="container">
 		<div id="c3cont" class="left"></div>
 		<div class="right">
-			<div id="c3qus" class="top-right"></div>
+			<div class="top-right"><h1 id="c3qus"></h1></div>
 			<div class="bottom-right">
-				<div id="c3ans1" class="answer-box"></div>
-				<div id="c3ans2" class="answer-box"></div>
-				<div id="c3ans3" class="answer-box"></div>
+				<div class="answer-box"><h1 id="c3ans1"></h1></div>
+				<div class="answer-box"><h1 id="c3ans2"></h1></div>
+				<div class="answer-box"><h1 id="c3ans3"></h1></div>
 			</div>
 		</div>
 	</div>
 	<div class="container">
 		<div id="c4cont" class="left"></div>
 		<div class="right">
-			<div id="c4qus" class="top-right"></div>
+			<div class="top-right"><h1 id="c4qus"></h1></div>
 			<div class="bottom-right">
-				<div id="c4ans1" class="answer-box"></div>
-				<div id="c4ans2" class="answer-box"></div>
-				<div id="c4ans3" class="answer-box"></div>
+				<div class="answer-box"><h1 id="c4ans1"></h1></div>
+				<div class="answer-box"><h1 id="c4ans2"></h1></div>
+				<div class="answer-box"><h1 id="c4ans3"></h1></div>
 			</div>
 		</div>
 	</div>
 	<div class="container">
 		<div id="c5cont" class="left"></div>
 		<div class="right">
-			<div id="c5qus" class="top-right"></div>
+			<div class="top-right"><h1 id="c5qus"></h1></div>
 			<div class="bottom-right">
-				<div id="c5ans1" class="answer-box"></div>
-				<div id="c5ans2" class="answer-box"></div>
-				<div id="c5ans3" class="answer-box"></div>
+				<div class="answer-box"><h1 id="c5ans1"></h1></div>
+				<div class="answer-box"><h1 id="c5ans2"></h1></div>
+				<div class="answer-box"><h1 id="c5ans3"></h1></div>
 			</div>
 		</div>
 	</div>
@@ -305,11 +320,11 @@
 <script>
 const lessons = {
   3811: {
-    type: "graph",
-    data: [1, 2, 3, 4],
-    question: "What is the slope of this graph?",
-    answers: [1,3,5],
-	correctans: 2
+    type: ["graph","graph","graph","graph","graph"],
+    data: [1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4],
+    question: ["What is the slope of this graph?","What is the slope of this graph?","What is the slope of this graph?","What is the slope of this graph?","What is the slope of this graph?"],
+    answers: [1,3,5  ,2,4,6  ,7,9,1  ,8,2,4  ,3,5,7],
+	correctans: [2,3,1,3,3]
   }
 }
 const titles = {
@@ -510,6 +525,10 @@ var temp, correctans, answers, color, subjecttxt, subject, grade, unit
 			answers = temp.answers
 			correctans = temp.correctans
 			loadquestion(temp.type ,temp.data ,temp.question ,1)
+			loadquestion(temp.type ,temp.data ,temp.question ,2)
+			loadquestion(temp.type ,temp.data ,temp.question ,3)
+			loadquestion(temp.type ,temp.data ,temp.question ,4)
+			loadquestion(temp.type ,temp.data ,temp.question ,5)
 		}
 	}
 	function back(pageId){
@@ -534,16 +553,16 @@ var temp, correctans, answers, color, subjecttxt, subject, grade, unit
 	//table/graph/text/ect
 	//x,y array/equation
 	//question
-	var selected = document.getElementById("canvas1");
+	var selected = document.getElementById("c"+canvasNum+"cont");
 	if (selected) selected.style.backgroundColor = "red";
 	selected = document.getElementById("c"+canvasNum+"qus");
-	if (selected) selected.textContent = question;
+	if (selected) selected.textContent = question[canvasNum-1];
 	selected = document.getElementById("c"+canvasNum+"ans1");
-	if (selected) selected.textContent = answers[0];
+	if (selected) selected.textContent = answers[canvasNum*3-3];
 	selected = document.getElementById("c"+canvasNum+"ans2");
-	if (selected) selected.textContent = answers[1];
+	if (selected) selected.textContent = answers[canvasNum*3-2];
 	selected = document.getElementById("c"+canvasNum+"ans3");
-	if (selected) selected.textContent = answers[2];
+	if (selected) selected.textContent = answers[canvasNum*3-1];
 	}
 </script>
 </body>
