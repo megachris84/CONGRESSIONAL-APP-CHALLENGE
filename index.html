@@ -50,7 +50,7 @@
 		align-items: center;
 		text-align: center;
 		padding: 0 8px; 
-		font-size: 13px;
+		font-size: 32px;
 	}
 	.item,.item2,.item3,.item4,.back {
 		width: 98vw;
@@ -316,15 +316,35 @@
 			</div>
 		</div>
 	</div>
+	<div class="container">
+		<div id="c6cont" class="left"></div>
+		<div class="right">
+			<div class="top-right"><h1 id="c6qus"></h1></div>
+			<div class="bottom-right">
+				<div class="answer-box" onclick="answer(6,1)"><h1 id="c6ans1"></h1></div>
+				<div class="answer-box" onclick="answer(6,2)"><h1 id="c6ans2"></h1></div>
+				<div class="answer-box" onclick="answer(6,3)"><h1 id="c6ans3"></h1></div>
+			</div>
+		</div>
+	</div>
 	</div>
 <script>
 const lessons = {
   3811: {
-    type: ["graph","graph","graph","graph","graph"],
-    data: [{ x: 0, y: 1 },{ x: 1, y: 4 },{ x: 2, y: 7 },{ x: 3, y: 10 }  ,{ x: 0, y: 6 },{ x: 1, y: 12 },{ x: 2, y: 18 },{ x: 3, y: 24 }  ,{ x: 0, y: 3 },{ x: 1, y: 10 },{ x: 2, y: 17 },{ x: 3, y: 24 }  ,{ x: 0, y: 4 },{ x: 1, y: 8 },{ x: 2, y: 12 },{ x: 3, y: 16 }  ,{ x: 0, y: 1 },{ x: 1, y: 8 },{ x: 2, y: 15 },{ x: 3, y: 22 }],
-    question: ["What is the slope of this graph?","What is the slope of this graph?","What is the slope of this graph?","What is the slope of this graph?","What is the slope of this graph?"],
-    answers: [1,3,5  ,2,4,6  ,7,9,1  ,8,2,4  ,3,5,7],
-	correctans: [2,3,1,3,3]
+    type: ["text","graph","graph","graph","graph","graph"],
+    data: [{x:0,y:0},{x:0,y:0},{x:0,y:0},{x:0,y:0}, {x:0,y:1},{x:1,y:4},{x:2,y:7},{x:3,y:10}  ,{x:0,y:6},{x:1,y:12},{x:2,y:18},{x:3,y:24}  ,{x:0,y:3},{x:1,y:10},{x:2,y:17},{x:3,y:24}  ,{x:0,y:4},{x:1,y:8},{x:2,y:12},{x:3,y:16}  ,{x:0,y:1},{x:1,y:8},{x:2,y:15},{x:3,y:22}],
+    question: ["What is the slope of Y=3X+2","What is the slope of this graph?","What is the slope of this graph?","What is the slope of this graph?","What is the slope of this graph?","What is the slope of this graph?"],
+    answers: [2,3,1  ,1,3,5  ,2,4,6  ,7,9,1  ,8,2,4  ,3,5,7],
+	correctans: [2,2,3,1,3,3],
+	text: ["Slope is the rate of change for a straight line on a graph. Slope is the Rise over Run. One example of slope could be 3/4 Rise(up) three Run(over) four."]
+  },
+  3812: {
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:0,y:0},{x:0,y:0},{x:0,y:0}, {x:0,y:1},{x:1,y:4},{x:2,y:7},{x:3,y:10}  ,{x:0,y:6},{x:1,y:12},{x:2,y:18},{x:3,y:24}  ,{x:0,y:3},{x:1,y:10},{x:2,y:17},{x:3,y:24}  ,{x:0,y:4},{x:1,y:8},{x:2,y:12},{x:3,y:16}  ,{x:0,y:1},{x:1,y:8},{x:2,y:15},{x:3,y:22}],
+    question: ["What is the slope of Y=3X+2","What is the slope of this table?","What is the slope of this table?","What is the slope of this table?","What is the slope of this table?","What is the slope of this table?"],
+    answers: [2,3,1  ,1,3,5  ,2,4,6  ,7,9,1  ,8,2,4  ,3,5,7],
+	correctans: [2,2,3,1,3,3],
+	text: ["This is slope-intercept form. Y is the Y value on the graph or table. X is the X value on the graph or table. M is the slope of the line. B is the Y-intercept of the line(Y Value when X is equal to 0). Example Y = 2X + 1. The slope goes up 2 over 1 (Rise over Run) and when x is equal to 0 y is 1."]
   }
 }
 const titles = {
@@ -370,8 +390,8 @@ const titles = {
   2853: "Science grade eight unit five lesson three",
   2854: "Science grade eight unit five lesson four",
 
-  3811: "Slope, Slope is the rate of change for a straight line on a graph. Slope is the Rise over Run. One example of slope could be 3/4 Rise(up) three Run(over) four.",
-  3812: "Y = MX + B, This is slope-intercept form. Y is the Y value on the graph or table. X is the X value on the graph or table. M is the slope of the line. B is the Y-intercept of the line(Y Value when X is equal to 0). Example Y = 2X + 1. The slope goes up 2 over 1 (Rise over Run) and when x is equal to 0 y is 1. ",
+  3811: "Slope",
+  3812: "Slope-intercept, Y = MX + B",
   3813: "Math grade eight unit one lesson three",
   3814: "Math grade eight unit one lesson four",
   3821: "Math grade eight unit two lesson one",
@@ -411,10 +431,10 @@ const titles = {
   4852: "History grade eight unit five lesson two",
   4853: "History grade eight unit five lesson three",
   4854: "History grade eight unit five lesson four",
-  
+    
   
   1911: "English grade nine unit one lesson one",
-  1912: "English grade eight unit one lesson two",
+  1912: "English grade nine unit one lesson two",
   1913: "English grade nine unit one lesson three",
   1914: "English grade nine unit one lesson four",
   1921: "English grade nine unit two lesson one",
@@ -455,8 +475,8 @@ const titles = {
   2953: "Science grade nine unit five lesson three",
   2954: "Science grade nine unit five lesson four",
 
-  3911: "Slope, Slope is the rate of change for a straight line on a graph. Slope is the Rise over Run. One example of slope could be 3/4 Rise(up) three Run(over) four.",
-  3912: "Y = MX + B, This is slope-intercept form. Y is the Y value on the graph or table. X is the X value on the graph or table. M is the slope of the line. B is the Y-intercept of the line(Y Value when X is equal to 0). Example Y = 2X + 1. The slope goes up 2 over 1 (Rise over Run) and when x is equal to 0 y is 1. ",
+  3911: "Math grade nine unit one lesson one",
+  3912: "Math grade nine unit one lesson two",
   3913: "Math grade nine unit one lesson three",
   3914: "Math grade nine unit one lesson four",
   3921: "Math grade nine unit two lesson one",
@@ -496,10 +516,180 @@ const titles = {
   4952: "History grade nine unit five lesson two",
   4953: "History grade nine unit five lesson three",
   4954: "History grade nine unit five lesson four",
+  
+  
+  11011: "English grade ten unit one lesson one",
+  11012: "English grade ten unit one lesson two",
+  11013: "English grade ten unit one lesson three",
+  11014: "English grade ten unit one lesson four",
+  11021: "English grade ten unit two lesson one",
+  11022: "English grade ten unit two lesson two",
+  11023: "English grade ten unit two lesson three",
+  11024: "English grade ten unit two lesson four",
+  11031: "English grade ten unit three lesson one",
+  11032: "English grade ten unit three lesson two",
+  11033: "English grade ten unit three lesson three",
+  11034: "English grade ten unit three lesson four",
+  11041: "English grade ten unit four lesson one",
+  11042: "English grade ten unit four lesson two",
+  11043: "English grade ten unit four lesson three",
+  11044: "English grade ten unit four lesson four",
+  11051: "English grade ten unit five lesson one",
+  11052: "English grade ten unit five lesson two",
+  11053: "English grade ten unit five lesson three",
+  11054: "English grade ten unit five lesson four",
+
+  21011: "Science grade ten unit one lesson one",
+  21012: "Science grade ten unit one lesson two",
+  21013: "Science grade ten unit one lesson three",
+  21014: "Science grade ten unit one lesson four",
+  21021: "Science grade ten unit two lesson one",
+  21022: "Science grade ten unit two lesson two",
+  21023: "Science grade ten unit two lesson three",
+  21024: "Science grade ten unit two lesson four",
+  21031: "Science grade ten unit three lesson one",
+  21032: "Science grade ten unit three lesson two",
+  21033: "Science grade ten unit three lesson three",
+  21034: "Science grade ten unit three lesson four",
+  21041: "Science grade ten unit four lesson one",
+  21042: "Science grade ten unit four lesson two",
+  21043: "Science grade ten unit four lesson three",
+  21044: "Science grade ten unit four lesson four",
+  21051: "Science grade ten unit five lesson one",
+  21052: "Science grade ten unit five lesson two",
+  21053: "Science grade ten unit five lesson three",
+  21054: "Science grade ten unit five lesson four",
+
+  31011: "Math grade ten unit one lesson one",
+  31012: "Math grade ten unit one lesson two",
+  31013: "Math grade ten unit one lesson three",
+  31014: "Math grade ten unit one lesson four",
+  31021: "Math grade ten unit two lesson one",
+  31022: "Math grade ten unit two lesson two",
+  31023: "Math grade ten unit two lesson three",
+  31024: "Math grade ten unit two lesson four",
+  31031: "Math grade ten unit three lesson one",
+  31032: "Math grade ten unit three lesson two",
+  31033: "Math grade ten unit three lesson three",
+  31034: "Math grade ten unit three lesson four",
+  31041: "Math grade ten unit four lesson one",
+  31042: "Math grade ten unit four lesson two",
+  31043: "Math grade ten unit four lesson three",
+  31044: "Math grade ten unit four lesson four",
+  31051: "Math grade ten unit five lesson one",
+  31052: "Math grade ten unit five lesson two",
+  31053: "Math grade ten unit five lesson three",
+  31054: "Math grade ten unit five lesson four",
+  
+  41011: "History grade ten unit one lesson one",
+  41012: "History grade ten unit one lesson two",
+  41013: "History grade ten unit one lesson three",
+  41014: "History grade ten unit one lesson four",
+  41021: "History grade ten unit two lesson one",
+  41022: "History grade ten unit two lesson two",
+  41023: "History grade ten unit two lesson three",
+  41024: "History grade ten unit two lesson four",
+  41031: "History grade ten unit three lesson one",
+  41032: "History grade ten unit three lesson two",
+  41033: "History grade ten unit three lesson three",
+  41034: "History grade ten unit three lesson four",
+  41041: "History grade ten unit four lesson one",
+  41042: "History grade ten unit four lesson two",
+  41043: "History grade ten unit four lesson three",
+  41044: "History grade ten unit four lesson four",
+  41051: "History grade ten unit five lesson one",
+  41052: "History grade ten unit five lesson two",
+  41053: "History grade ten unit five lesson three",
+  41054: "History grade ten unit five lesson four",
+  
+    
+  11111: "English grade eleven unit one lesson one",
+  11112: "English grade eleven unit one lesson two",
+  11113: "English grade eleven unit one lesson three",
+  11114: "English grade eleven unit one lesson four",
+  11121: "English grade eleven unit two lesson one",
+  11122: "English grade eleven unit two lesson two",
+  11123: "English grade eleven unit two lesson three",
+  11124: "English grade eleven unit two lesson four",
+  11131: "English grade eleven unit three lesson one",
+  11132: "English grade eleven unit three lesson two",
+  11133: "English grade eleven unit three lesson three",
+  11134: "English grade eleven unit three lesson four",
+  11141: "English grade eleven unit four lesson one",
+  11142: "English grade eleven unit four lesson two",
+  11143: "English grade eleven unit four lesson three",
+  11144: "English grade eleven unit four lesson four",
+  11151: "English grade eleven unit five lesson one",
+  11152: "English grade eleven unit five lesson two",
+  11153: "English grade eleven unit five lesson three",
+  11154: "English grade eleven unit five lesson four",
+
+  21111: "Science grade eleven unit one lesson one",
+  21112: "Science grade eleven unit one lesson two",
+  21113: "Science grade eleven unit one lesson three",
+  21114: "Science grade eleven unit one lesson four",
+  21121: "Science grade eleven unit two lesson one",
+  21122: "Science grade eleven unit two lesson two",
+  21123: "Science grade eleven unit two lesson three",
+  21124: "Science grade eleven unit two lesson four",
+  21131: "Science grade eleven unit three lesson one",
+  21132: "Science grade eleven unit three lesson two",
+  21133: "Science grade eleven unit three lesson three",
+  21134: "Science grade eleven unit three lesson four",
+  21141: "Science grade eleven unit four lesson one",
+  21142: "Science grade eleven unit four lesson two",
+  21143: "Science grade eleven unit four lesson three",
+  21144: "Science grade eleven unit four lesson four",
+  21151: "Science grade eleven unit five lesson one",
+  21152: "Science grade eleven unit five lesson two",
+  21153: "Science grade eleven unit five lesson three",
+  21154: "Science grade eleven unit five lesson four",
+
+  31111: "Math grade eleven unit one lesson one",
+  31112: "Math grade eleven unit one lesson two",
+  31113: "Math grade eleven unit one lesson three",
+  31114: "Math grade eleven unit one lesson four",
+  31121: "Math grade eleven unit two lesson one",
+  31122: "Math grade eleven unit two lesson two",
+  31123: "Math grade eleven unit two lesson three",
+  31124: "Math grade eleven unit two lesson four",
+  31131: "Math grade eleven unit three lesson one",
+  31132: "Math grade eleven unit three lesson two",
+  31133: "Math grade eleven unit three lesson three",
+  31134: "Math grade eleven unit three lesson four",
+  31141: "Math grade eleven unit four lesson one",
+  31142: "Math grade eleven unit four lesson two",
+  31143: "Math grade eleven unit four lesson three",
+  31144: "Math grade eleven unit four lesson four",
+  31151: "Math grade eleven unit five lesson one",
+  31152: "Math grade eleven unit five lesson two",
+  31153: "Math grade eleven unit five lesson three",
+  31154: "Math grade eleven unit five lesson four",
+  
+  41111: "History grade eleven unit one lesson one",
+  41112: "History grade eleven unit one lesson two",
+  41113: "History grade eleven unit one lesson three",
+  41114: "History grade eleven unit one lesson four",
+  41121: "History grade eleven unit two lesson one",
+  41122: "History grade eleven unit two lesson two",
+  41123: "History grade eleven unit two lesson three",
+  41124: "History grade eleven unit two lesson four",
+  41131: "History grade eleven unit three lesson one",
+  41132: "History grade eleven unit three lesson two",
+  41133: "History grade eleven unit three lesson three",
+  41134: "History grade eleven unit three lesson four",
+  41141: "History grade eleven unit four lesson one",
+  41142: "History grade eleven unit four lesson two",
+  41143: "History grade eleven unit four lesson three",
+  41144: "History grade eleven unit four lesson four",
+  41151: "History grade eleven unit five lesson one",
+  41152: "History grade eleven unit five lesson two",
+  41153: "History grade eleven unit five lesson three",
+  41154: "History grade eleven unit five lesson four",
 };
 
 const colors = ["#ff706a","#61f95c","#599aea","#ffed50"]
-var temp, dataPoints, correctans, answers, color, subjecttxt, subject, grade, unit
+var temp, test, dataPoints, correctans, answers, color, subjecttxt, subject, grade, unit
 	function showPage(pageId, back, lesson) {
 		const pages = document.querySelectorAll('.page');
 		pages.forEach(page => page.classList.remove('active'));
@@ -525,11 +715,13 @@ var temp, dataPoints, correctans, answers, color, subjecttxt, subject, grade, un
 			answers = temp.answers
 			correctans = temp.correctans
 			dataPoints = temp.data
+			text = temp.text
 			loadquestion(temp.type ,temp.question ,1)
 			loadquestion(temp.type ,temp.question ,2)
 			loadquestion(temp.type ,temp.question ,3)
 			loadquestion(temp.type ,temp.question ,4)
 			loadquestion(temp.type ,temp.question ,5)
+			loadquestion(temp.type ,temp.question ,6)
 		}
 	}
 	function back(pageId){
@@ -558,9 +750,6 @@ var temp, dataPoints, correctans, answers, color, subjecttxt, subject, grade, un
 	}
 	}
 	function loadquestion(type,question,canvasNum){
-	//table/graph/text/ect
-	//x,y array/equation
-	//question
 	var selected = document.getElementById("c"+canvasNum+"cont");
 	if (selected) selected.style.backgroundColor = "white";
 	selected = document.getElementById("c"+canvasNum+"qus");
@@ -572,73 +761,157 @@ var temp, dataPoints, correctans, answers, color, subjecttxt, subject, grade, un
 	selected = document.getElementById("c"+canvasNum+"ans3");
 	if (selected) selected.textContent = answers[canvasNum*3-1];
 	
-	
 	const container = document.getElementById("c" + canvasNum + "cont");
 	container.innerHTML = "";
-
-	const canvas = document.createElement("canvas");
-	canvas.id = "chart" + canvasNum;
-	container.appendChild(canvas);
-
-	canvas.style.width = "100%";
-	canvas.style.height = "100%";
-
-	// ⬇️ Slice only 4 points for the current chart
+	if (type[canvasNum-1] == "graph"){
+	console.log("graph")
+		const canvas = document.createElement("canvas");
+		canvas.id = "chart" + canvasNum;
+		container.appendChild(canvas);
+		canvas.style.width = "100%";
+		canvas.style.height = "100%";
+		const slicedPoints = dataPoints.slice((canvasNum - 1) * 4, canvasNum * 4);
+		new Chart(canvas, {
+			  type: 'line',
+			  data: {
+				datasets: [{
+				  label: "Line " + canvasNum,
+				  data: slicedPoints,
+				  borderColor: "#000",
+				  backgroundColor: "rgba(0,0,0,0.1)",
+				  borderWidth: 3,
+				  tension: 0.3
+				}]
+			  },
+			  options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				scales: {
+				  x: {
+					type: "linear",
+					position: "bottom",
+					ticks: {
+					  color: "#000",
+					  stepSize: 1
+					},
+					beginAtZero: true
+				  },
+				  y: {
+					ticks: {
+					  color: "#000",
+					  stepSize: 1
+					},
+					beginAtZero: true
+				  }
+				},
+				plugins: {
+				  legend: {
+					labels: {
+					  color: "#000"
+					}
+				  }
+				}
+			  },
+			  plugins: [{
+				id: 'customCanvasBackgroundColor',
+				beforeDraw: (chart) => {
+				  const ctx = chart.canvas.getContext('2d');
+				  ctx.save();
+				  ctx.globalCompositeOperation = 'destination-over';
+				  ctx.fillStyle = 'white';
+				  ctx.fillRect(0, 0, chart.width, chart.height);
+				  ctx.restore();
+				}
+			  }]
+			});
+	} else if (type[canvasNum-1] == "table"){
+	console.log("table")
+	const table = document.createElement("table");
+	table.id = "table" + canvasNum;
+	container.appendChild(table);
+	table.style.width = "100%";
+	table.style.height = "100%";
+	table.style.borderCollapse = "collapse";
+	table.style.marginBottom = "20px";
+	table.style.border = "1px solid black";
+	table.style.color = "#000";
 	const slicedPoints = dataPoints.slice((canvasNum - 1) * 4, canvasNum * 4);
-
-	new Chart(canvas, {
-	  type: 'line',
-	  data: {
-		datasets: [{
-		  label: "Line " + canvasNum,
-		  data: slicedPoints,
-		  borderColor: "#000",
-		  backgroundColor: "rgba(0,0,0,0.1)",
-		  borderWidth: 3,
-		  tension: 0.3
-		}]
-	  },
-	  options: {
-		responsive: true,
-		maintainAspectRatio: false,
-		scales: {
-		  x: {
-			type: "linear",
-			position: "bottom",
-			ticks: {
-			  color: "#000",
-			  stepSize: 1
-			},
-			beginAtZero: true
-		  },
-		  y: {
-			ticks: {
-			  color: "#000",
-			  stepSize: 1
-			},
-			beginAtZero: true
-		  }
-		},
-		plugins: {
-		  legend: {
-			labels: {
-			  color: "#000"
-			}
-		  }
-		}
-	  },
-	  plugins: [{
-		id: 'customCanvasBackgroundColor',
-		beforeDraw: (chart) => {
-		  const ctx = chart.canvas.getContext('2d');
-		  ctx.save();
-		  ctx.globalCompositeOperation = 'destination-over';
-		  ctx.fillStyle = 'white';
-		  ctx.fillRect(0, 0, chart.width, chart.height);
-		  ctx.restore();
-		}
-	  }]
+	const thead = document.createElement("thead");
+	const headerRow = document.createElement("tr");
+	["X", "Y"].forEach((headerText) => {
+	  const th = document.createElement("th");
+	  th.innerText = headerText;
+	  th.style.border = "1px solid black";
+	  th.style.padding = "8px";
+	  th.style.backgroundColor = "#f0f0f0";
+	  headerRow.appendChild(th);
 	});
+	thead.appendChild(headerRow);
+	table.appendChild(thead);
+	const tbody = document.createElement("tbody");
+	slicedPoints.forEach((point) => {
+	  const row = document.createElement("tr");
+	  [point.x, point.y].forEach((value) => {
+		const td = document.createElement("td");
+		td.innerText = value;
+		td.style.border = "1px solid black";
+		td.style.padding = "8px";
+		row.appendChild(td);
+	  });
+	  tbody.appendChild(row);
+	});
+	table.appendChild(tbody);
+	} else if (type[canvasNum-1] == "table"){
+	console.log("table")
+	const table = document.createElement("table");
+	table.id = "table" + canvasNum;
+	container.appendChild(table);
+	table.style.width = "100%";
+	table.style.height = "100%";
+	table.style.borderCollapse = "collapse";
+	table.style.marginBottom = "20px";
+	table.style.border = "1px solid black";
+	table.style.color = "#000";
+	const slicedPoints = dataPoints.slice((canvasNum - 1) * 4, canvasNum * 4);
+	const thead = document.createElement("thead");
+	const headerRow = document.createElement("tr");
+	["X", "Y"].forEach((headerText) => {
+	  const th = document.createElement("th");
+	  th.innerText = headerText;
+	  th.style.border = "1px solid black";
+	  th.style.padding = "8px";
+	  th.style.backgroundColor = "#f0f0f0";
+	  headerRow.appendChild(th);
+	});
+	thead.appendChild(headerRow);
+	table.appendChild(thead);
+	const tbody = document.createElement("tbody");
+	slicedPoints.forEach((point) => {
+	  const row = document.createElement("tr");
+	  [point.x, point.y].forEach((value) => {
+		const td = document.createElement("td");
+		td.innerText = value;
+		td.style.border = "1px solid black";
+		td.style.padding = "8px";
+		row.appendChild(td);
+	  });
+	  tbody.appendChild(row);
+	});
+	table.appendChild(tbody);
+	}else if (type[canvasNum-1] == "text"){
+	console.log("text")
+	  const heading = document.createElement("h1");
+	  heading.id = "textbox" + canvasNum;
+	  heading.style.color = "#000";
+	  heading.style.marginBottom = "20px";
+	  heading.style.fontSize = "24px";
+	  heading.style.fontWeight = "normal";
+	  heading.style.whiteSpace = "pre-wrap";
+	  heading.style.margin = "8px";
+	  let textContent = text[canvasNum-1];
+	  heading.innerText = textContent.trim();
+	  container.appendChild(heading);
+	}
 	}
 </script>
 </body>
