@@ -1,334 +1,334 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>CONGRESSIONAL APP CHALLENGE</title>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<style>
-	* {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	}
-	body, html {
-		user-select: none;
-		height: 100vh;
-		width: 100vw;
-		font-family: sans-serif;
-		margin: 0;
-		padding: 0;
-	}
-	body {
-		background-color: #DBDBDB;
-	}
-	.page {
-		display: none;
-		height: 100vh;
-		width: 100vw;
-	}
-	.active {
-		display: block;
-	}
-	.top {
-		height: 25vh;
-		width: 100vw;
-		background-color: white;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		text-align: center;
-		padding: 0 16px; 
-		font-size: 24px;
-	}
-	.top2 {
-		height: 25vh;
-		width: 100vw;
-		background-color: white;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		text-align: center;
-		padding: 0 8px; 
-		font-size: 24px;
-	}
-	.item,.item2,.item3,.item4,.back {
-		width: 98vw;
-		background-color: magenta;
-		border: 4px solid black;
-		border-radius: 25px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-	.item-container {
-		display: flex;
-		justify-content: space-evenly;
-		align-items: center;
-		height: 35vh;
-		gap: 8px; 
-	}
-	.item-container2 {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		height: 75vh;
-		width: 100vw;
-		gap: 8px; 
-	}
-	.item {
-		height: 35vh;
-		width: 49vw;
-	}
-	.item2 {
-		height: 15vh;
-	}
-	.item3 {
-		height: 12vh;
-	}
-	.item4 {
-		height: 15vh;
-		background-color: #8C92FF;
-	}
-	.red-bg {
-		background-color: #ff4038;
-	}
-	.green-bg {
-		background-color: #2df726;
-	}
-	.blue-bg {
-		background-color: #2279e3;
-	}
-	.yellow-bg {
-		background-color: #ffe716;
-	}
-	.back {
-		height: 10vh;
-		width: 98vw;
-		background-color: #FF0040;
-	}
-	canvas {
-		background-color: blue;
-		width: 25vw;
-		height: 50vh;
-		border-radius: 4px;
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONGRESSIONAL APP CHALLENGE</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-	.container {
-		height: 50%;
-		width: 100%;
-		padding: 8px;
-		display: flex;
+    body, html {
+      user-select: none;
+      height: 100vh;
+      width: 100vw;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
     }
-    .left {
-		background-color: blue;
-		width: 50%;
-		height: 100%;
-		border-radius: 4px;
+    body {
+      background-color: #DBDBDB;
     }
-    .right {
-		width: 50%;
-		height: 100%;
-		padding-left: 8px;
-		display: flex;
-		flex-direction: column;
-		gap: 8px;
+    .page {
+      display: none;
+      height: 100vh;
+      width: 100vw;
     }
-    .top-right {
-		height: 33.33%;
-		background-color: #ccc;
-		border-radius: 4px;
-		text-align: center;
-		font-size: 16px;
+    .active {
+      display: block;
     }
-    .bottom-right {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		gap: 8px;
+    .top {
+      height: 25vh;
+      width: 100vw;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 16px;
+      font-size: 24px;
     }
-    .answer-box {
-		flex: 1;
-		background-color: #eee;
-		border-radius: 4px;
-		text-align: center;
-		font-size: 16px;
+    .top2 {
+      height: 25vh;
+      width: 100vw;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 8px;
+      font-size: 24px;
     }
-	.h1 {
-		max-width: 90%;
-		word-wrap: break-word;
-	}
-</style>
-</head>
-<body>
-	<div id="page1" class="page active">
-		<div class="top">
-			<h1>What subject would you like help with?</h1>
-		</div>
-		<div class="item-container2">
-			<div class="item-container">
-				<div class="item red-bg" onclick="select(0)">
-					<h1>English</h1>
-				</div>
-				<div class="item green-bg" onclick="select(1)">
-					<h1>Science</h1>
-				</div>
-			</div>
-			<div class="item-container">
-				<div class="item blue-bg" onclick="select(2)">
-					<h1>Math</h1>
-				</div>
-				<div class="item yellow-bg" onclick="select(3)">
-					<h1>History</h1>
-				</div>
-			</div>
-			
-		</div>
-	</div>
-	<div id="page2" class="page">
-		<div class="top">
-			<h1 id="page2text">(selection1)</h1>
-		</div>
-		<div class="item-container2">
-			<div class="item2" onclick="select(4)">
-				<h1>Grade 8</h1>
-			</div>
-			<div class="item2" onclick="select(5)">
-				<h1>Grade 9</h1>
-			</div>
-			<div class="item2" onclick="select(6)">
-				<h1>Grade 10</h1>
-			</div>
-			<div class="item2" onclick="select(7)">
-				<h1>Grade 11</h1>
-			</div>
-			<div class="back" onclick="back('page1')">
-				<h1>Back</h1>
-			</div>
-		</div>
-	</div>
-	<div id="page3" class="page">
-		<div class="top">
-			<h1 id="page3text">What unit of (selection2) do you need?</h1>
-		</div>
-		<div class="item-container2">
-			<div class="item3" onclick="select(8)">
-				<h1>Unit 1</h1>
-			</div>
-			<div class="item3" onclick="select(9)">
-				<h1>Unit 2</h1>
-			</div>
-			<div class="item3" onclick="select(10)">
-				<h1>Unit 3</h1>
-			</div>
-			<div class="item3" onclick="select(11)">
-				<h1>Unit 4</h1>
-			</div>
-			<div class="item3" onclick="select(12)">
-				<h1>Unit 5</h1>
-			</div>
-			<div class="back" onclick="back('page2')">
-				<h1>Back</h1>
-			</div>
-		</div>
-	</div>
-	<div id="page4" class="page">
-		<div class="top">
-			<h1 id="page4text">Unit (selection3)</h1>
-		</div>
-		<div class="item-container2">
-			<div class="item4" onclick="showPage('page5', 0, 1)">
-				<h1>Lesson 1</h1>
-			</div>
-			<div class="item4" onclick="showPage('page5', 0, 2)">
-				<h1>Lesson 2</h1>
-			</div>
-			<div class="item4" onclick="showPage('page5', 0, 3)">
-				<h1>Lesson 3</h1>
-			</div>
-			<div class="item4" onclick="showPage('page5', 0, 4)">
-				<h1>Lesson 4</h1>
-			</div>
-			<div class="back" onclick="back('page3')">
-				<h1>Back</h1>
-			</div>
-		</div>
-	</div>
-	<div id="page5" class="page">
-	<div class="top2">
-		<h1 id="page5text"></h1>
-	</div>
-	<div class="back" onclick="back('page4')">
-		<h1>Back</h1>
-	</div>
-	<div class="container">
-		<div id="c1cont" class="left"></div>
-		<div class="right">
-			<div class="top-right"><h1 id="c1qus"></h1></div>
-			<div class="bottom-right">
-				<div class="answer-box" onclick="answer(1,1)"><h1 id="c1ans1"></h1></div>
-				<div class="answer-box" onclick="answer(1,2)"><h1 id="c1ans2"></h1></div>
-				<div class="answer-box" onclick="answer(1,3)"><h1 id="c1ans3"></h1></div>
-			</div>
-		</div>
-	</div>
-	<div class="container">
-		<div id="c2cont" class="left"></div>
-		<div class="right">
-			<div class="top-right"><h1 id="c2qus"></h1></div>
-			<div class="bottom-right">
-				<div class="answer-box" onclick="answer(2,1)"><h1 id="c2ans1"></h1></div>
-				<div class="answer-box" onclick="answer(2,2)"><h1 id="c2ans2"></h1></div>
-				<div class="answer-box" onclick="answer(2,3)"><h1 id="c2ans3"></h1></div>
-			</div>
-		</div>
-	</div>
-	<div class="container">
-		<div id="c3cont" class="left"></div>
-		<div class="right">
-			<div class="top-right"><h1 id="c3qus"></h1></div>
-			<div class="bottom-right">
-				<div class="answer-box" onclick="answer(3,1)"><h1 id="c3ans1"></h1></div>
-				<div class="answer-box" onclick="answer(3,2)"><h1 id="c3ans2"></h1></div>
-				<div class="answer-box" onclick="answer(3,3)"><h1 id="c3ans3"></h1></div>
-			</div>
-		</div>
-	</div>
-	<div class="container">
-		<div id="c4cont" class="left"></div>
-		<div class="right">
-			<div class="top-right"><h1 id="c4qus"></h1></div>
-			<div class="bottom-right">
-				<div class="answer-box" onclick="answer(4,1)"><h1 id="c4ans1"></h1></div>
-				<div class="answer-box" onclick="answer(4,2)"><h1 id="c4ans2"></h1></div>
-				<div class="answer-box" onclick="answer(4,3)"><h1 id="c4ans3"></h1></div>
-			</div>
-		</div>
-	</div>
-	<div class="container">
-		<div id="c5cont" class="left"></div>
-		<div class="right">
-			<div class="top-right"><h1 id="c5qus"></h1></div>
-			<div class="bottom-right">
-				<div class="answer-box" onclick="answer(5,1)"><h1 id="c5ans1"></h1></div>
-				<div class="answer-box" onclick="answer(5,2)"><h1 id="c5ans2"></h1></div>
-				<div class="answer-box" onclick="answer(5,3)"><h1 id="c5ans3"></h1></div>
-			</div>
-		</div>
-	</div>
-	<div class="container">
-		<div id="c6cont" class="left"></div>
-		<div class="right">
-			<div class="top-right"><h1 id="c6qus"></h1></div>
-			<div class="bottom-right">
-				<div class="answer-box" onclick="answer(6,1)"><h1 id="c6ans1"></h1></div>
-				<div class="answer-box" onclick="answer(6,2)"><h1 id="c6ans2"></h1></div>
-				<div class="answer-box" onclick="answer(6,3)"><h1 id="c6ans3"></h1></div>
-			</div>
-		</div>
-	</div>
-	</div>
-<script>
+    .item,.item2,.item3,.item4,.back {
+      width: 98vw;
+      background-color: magenta;
+      border: 4px solid black;
+      border-radius: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .item-container {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 35vh;
+      gap: 8px;
+    }
+    .item-container2 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 75vh;
+      width: 100vw;
+      gap: 8px;
+    }
+    .item {
+      height: 35vh;
+      width: 49vw;
+    }
+    .item2 {
+      height: 15vh;
+    }
+    .item3 {
+      height: 12vh;
+    }
+    .item4 {
+      height: 15vh;
+      background-color: #8C92FF;
+    }
+    .red-bg {
+      background-color: #ff4038;
+    }
+    .green-bg {
+      background-color: #2df726;
+    }
+    .blue-bg {
+      background-color: #2279e3;
+    }
+    .yellow-bg {
+      background-color: #ffe716;
+    }
+    .back {
+      height: 10vh;
+      width: 98vw;
+      background-color: #FF0040;
+    }
+    canvas {
+      background-color: blue;
+      width: 25vw;
+      height: 50vh;
+      border-radius: 4px;
+      }
+    .container {
+      height: 50%;
+      width: 100%;
+      padding: 8px;
+      display: flex;
+      }
+      .left {
+      background-color: blue;
+      width: 50%;
+      height: 100%;
+      border-radius: 4px;
+      }
+      .right {
+      width: 50%;
+      height: 100%;
+      padding-left: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      }
+      .top-right {
+      height: 33.33%;
+      background-color: #ccc;
+      border-radius: 4px;
+      text-align: center;
+      font-size: 16px;
+      }
+      .bottom-right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      }
+      .answer-box {
+      flex: 1;
+      background-color: #eee;
+      border-radius: 4px;
+      text-align: center;
+      font-size: 16px;
+      }
+    .h1 {
+      max-width: 90%;
+      word-wrap: break-word;
+    }
+  </style>
+  </head>
+  <body>
+    <div id="page1" class="page active">
+      <div class="top">
+        <h1>What subject would you like help with?</h1>
+      </div>
+      <div class="item-container2">
+        <div class="item-container">
+          <div class="item red-bg" onclick="select(0)">
+            <h1>English</h1>
+          </div>
+          <div class="item green-bg" onclick="select(1)">
+            <h1>Science</h1>
+          </div>
+        </div>
+        <div class="item-container">
+          <div class="item blue-bg" onclick="select(2)">
+            <h1>Math</h1>
+          </div>
+          <div class="item yellow-bg" onclick="select(3)">
+            <h1>History</h1>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+    <div id="page2" class="page">
+      <div class="top">
+        <h1 id="page2text">(selection1)</h1>
+      </div>
+      <div class="item-container2">
+        <div class="item2" onclick="select(4)">
+          <h1>Grade 8</h1>
+        </div>
+        <div class="item2" onclick="select(5)">
+          <h1>Grade 9</h1>
+        </div>
+        <div class="item2" onclick="select(6)">
+          <h1>Grade 10</h1>
+        </div>
+        <div class="item2" onclick="select(7)">
+          <h1>Grade 11</h1>
+        </div>
+        <div class="back" onclick="back('page1')">
+          <h1>Back</h1>
+        </div>
+      </div>
+    </div>
+    <div id="page3" class="page">
+      <div class="top">
+        <h1 id="page3text">What unit of (selection2) do you need?</h1>
+      </div>
+      <div class="item-container2">
+        <div class="item3" onclick="select(8)">
+          <h1>Unit 1</h1>
+        </div>
+        <div class="item3" onclick="select(9)">
+          <h1>Unit 2</h1>
+        </div>
+        <div class="item3" onclick="select(10)">
+          <h1>Unit 3</h1>
+        </div>
+        <div class="item3" onclick="select(11)">
+          <h1>Unit 4</h1>
+        </div>
+        <div class="item3" onclick="select(12)">
+          <h1>Unit 5</h1>
+        </div>
+        <div class="back" onclick="back('page2')">
+          <h1>Back</h1>
+        </div>
+      </div>
+    </div>
+    <div id="page4" class="page">
+      <div class="top">
+        <h1 id="page4text">Unit (selection3)</h1>
+      </div>
+      <div class="item-container2">
+        <div class="item4" onclick="showPage('page5', 0, 1)">
+          <h1>Lesson 1</h1>
+        </div>
+        <div class="item4" onclick="showPage('page5', 0, 2)">
+          <h1>Lesson 2</h1>
+        </div>
+        <div class="item4" onclick="showPage('page5', 0, 3)">
+          <h1>Lesson 3</h1>
+        </div>
+        <div class="item4" onclick="showPage('page5', 0, 4)">
+          <h1>Lesson 4</h1>
+        </div>
+        <div class="back" onclick="back('page3')">
+          <h1>Back</h1>
+        </div>
+      </div>
+    </div>
+    <div id="page5" class="page">
+    <div class="top2">
+      <h1 id="page5text"></h1>
+    </div>
+    <div class="back" onclick="back('page4')">
+      <h1>Back</h1>
+    </div>
+    <div class="container">
+      <div id="c1cont" class="left"></div>
+      <div class="right">
+        <div class="top-right"><h1 id="c1qus"></h1></div>
+        <div class="bottom-right">
+          <div class="answer-box" onclick="answer(1,1)"><h1 id="c1ans1"></h1></div>
+          <div class="answer-box" onclick="answer(1,2)"><h1 id="c1ans2"></h1></div>
+          <div class="answer-box" onclick="answer(1,3)"><h1 id="c1ans3"></h1></div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div id="c2cont" class="left"></div>
+      <div class="right">
+        <div class="top-right"><h1 id="c2qus"></h1></div>
+        <div class="bottom-right">
+          <div class="answer-box" onclick="answer(2,1)"><h1 id="c2ans1"></h1></div>
+          <div class="answer-box" onclick="answer(2,2)"><h1 id="c2ans2"></h1></div>
+          <div class="answer-box" onclick="answer(2,3)"><h1 id="c2ans3"></h1></div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div id="c3cont" class="left"></div>
+      <div class="right">
+        <div class="top-right"><h1 id="c3qus"></h1></div>
+        <div class="bottom-right">
+          <div class="answer-box" onclick="answer(3,1)"><h1 id="c3ans1"></h1></div>
+          <div class="answer-box" onclick="answer(3,2)"><h1 id="c3ans2"></h1></div>
+          <div class="answer-box" onclick="answer(3,3)"><h1 id="c3ans3"></h1></div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div id="c4cont" class="left"></div>
+      <div class="right">
+        <div class="top-right"><h1 id="c4qus"></h1></div>
+        <div class="bottom-right">
+          <div class="answer-box" onclick="answer(4,1)"><h1 id="c4ans1"></h1></div>
+          <div class="answer-box" onclick="answer(4,2)"><h1 id="c4ans2"></h1></div>
+          <div class="answer-box" onclick="answer(4,3)"><h1 id="c4ans3"></h1></div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div id="c5cont" class="left"></div>
+      <div class="right">
+        <div class="top-right"><h1 id="c5qus"></h1></div>
+        <div class="bottom-right">
+          <div class="answer-box" onclick="answer(5,1)"><h1 id="c5ans1"></h1></div>
+          <div class="answer-box" onclick="answer(5,2)"><h1 id="c5ans2"></h1></div>
+          <div class="answer-box" onclick="answer(5,3)"><h1 id="c5ans3"></h1></div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div id="c6cont" class="left"></div>
+      <div class="right">
+        <div class="top-right"><h1 id="c6qus"></h1></div>
+        <div class="bottom-right">
+          <div class="answer-box" onclick="answer(6,1)"><h1 id="c6ans1"></h1></div>
+          <div class="answer-box" onclick="answer(6,2)"><h1 id="c6ans2"></h1></div>
+          <div class="answer-box" onclick="answer(6,3)"><h1 id="c6ans3"></h1></div>
+        </div>
+      </div>
+    </div>
+    </div>
+  <script>
 const lessons = {
   3811: {
     type: ["text","graph","graph","graph","graph","graph"],
@@ -346,58 +346,58 @@ const lessons = {
 	correctans: [1,2,1,2,2,3],
 	text: ["Lesson 1 Continued, Finding slope from tables."]
   },
-  3813: {//SET UP
-    type: ["text","graph","graph","graph","table","table"], 
-    data: [{x:0,y:0},{x:0,y:0},{x:0,y:0},{x:0,y:0}, {x:0,y:1},{x:1,y:4},{x:2,y:7},{x:3,y:10}  ,{x:0,y:6},{x:1,y:12},{x:2,y:18},{x:3,y:24}  ,{x:0,y:3},{x:1,y:10},{x:2,y:17},{x:3,y:24}  ,{x:0,y:4},{x:1,y:8},{x:2,y:12},{x:3,y:16}  ,{x:0,y:1},{x:1,y:8},{x:2,y:15},{x:3,y:22}],
-    question: ["What is the Y-intercept of Y=3X+2","What is the slope of this graph?","What is the slope of this graph?","What is the slope of this graph?","What is the slope of this table?","What is the slope of this table?"],
-    answers: [2,3,1  ,1,3,5  ,2,4,6  ,7,9,1  ,8,2,4  ,3,5,7],
-	correctans: [2,2,3,1,3,3],
-	text: ["Y = MX + B, This is slope-intercept form. Y is the Y value on the graph or table. X is the X value on the graph or table. M is the slope of the line. B is the Y-intercept of the line(Y Value when X is equal to 0). Example Y = 2X + 1. The slope goes up 2 over 1 (Rise over Run) and when x is equal to 0 y is 1."]
+  3813: {
+    type: ["text","text","text","text","text","text"],
+    data: [],
+    question: ["What is the Y-intercept of Y=3X+2","What is the Y-intercept of the equation?","What is the Y-intercept of the equation?","What is the Y-intercept of the equation?","What is the Y-intercept of the equation?","What is the Y-intercept of the equation?"],
+    answers: [2,3,1  ,5,6,2  ,2.5,4.5,3  ,8,2,10 ,-48,48,47  ,5,15,-5],
+correctans: [2,1,3,1,2,1],
+text: ["Y = MX + B, This is slope-intercept form. Y is the Y value on the graph or table. X is the X value on the graph or table. M is the slope of the line. B is the Y-intercept of the line(Y Value when X is equal to 0). Example Y = 2X + 1. The slope goes up 2 over 1 (Rise over Run) and when x is equal to 0 y is 1.","Y = 6X + 5","Y = 2.5X + 3","Y = 10X + 8","Y = 48X + 47","Y = 15X + 5"]
   },
-  3814: {//SET UP
-    type: ["text","table","table","table","table","table"],
-    data: [{x:0,y:0},{x:0,y:0},{x:0,y:0},{x:0,y:0}, {x:0,y:1},{x:1,y:4},{x:2,y:7},{x:3,y:10}  ,{x:0,y:6},{x:1,y:12},{x:2,y:18},{x:3,y:24}  ,{x:0,y:3},{x:1,y:10},{x:2,y:17},{x:3,y:24}  ,{x:0,y:4},{x:1,y:8},{x:2,y:12},{x:3,y:16}  ,{x:0,y:1},{x:1,y:8},{x:2,y:15},{x:3,y:22}],
-    question: ["What is the Y-intercept of Y=3X+2","What is the slope of Y = MX + B?","What is the slope of Y = MX + B?","What is the slope of Y = MX + B?","What is the Y-intercept of Y = MX + B?","What is the Y-intercept of Y = MX + B?"],
-    answers: [2,3,1  ,1,3,5  ,2,4,6  ,7,9,1  ,8,2,4  ,3,5,7],
-	correctans: [2,2,3,1,3,3],
-	text: ["Lesson 3 Continued, Finding slope and y-intercept from equations."]
+  3814: {
+    type: ["text","text","text","text","text","text"],
+    data: [],
+    question: ["What is the Y-intercept of Y=3X+5","What is the slope of the equation?","What is the slope of the equation?","What is the slope of the equation?","What is the slope of the equation?","What is the slope of the equation?"],
+    answers: [8,3,5  ,"1/2",2.5,1  ,13,1,3  ,17,22,-87  ,11.5,11,10  ,105,100,102],
+	correctans: [3,1,3,2,2,1],
+	text: ["Lesson 3 Continued, Finding slope and y-intercept from equations.","Y = 1/2X - 2.5","Y = 3X + 1","Y = 22X -87","Y = 11X + 11.5","Y = 105X + 102"]
   },
 
-  3821: {//SET UP
-    type: ["text","table","table","table","table","table"],
-    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
-    question: ["","","","","",""],
-    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
-	correctans: [0,0,0,0,0,0],
-	text: [""]
+  3821: {
+    type: ["text","text","text","text","text","text"],
+    data: [],
+    question: ["How many solutions","How many solutions","How many solutions","How many solutions","How many solutions","How many solutions"],
+    answers: ["One Solution","No Solution","Infinite Solutions"  ,"One Solution","No Solution","Infinite Solutions"  ,"One Solution","No Solution","Infinite Solutions"  ,"One Solution","No Solution","Infinite Solutions"  ,"One Solution","No Solution","Infinite Solutions"  ,"One Solution","No Solution","Infinite Solutions"],
+	correctans: [2,3,1,1,3,2],
+	text: ["There are three types of linear equations one solution, no solution, and infinite solutions. One way to tell the three apart is check if X is the same on both sides Example 3X +2 = 3X + 2 this is an example of a equation with infinite solutions because both sides are the same if the x was not equal on both sides it would have one solution and if the constants were different it would be no solution. How many solutions does 3(X+2)-2 = 5X+10-2X have?","2X+2 = 2(X+1)","X+2-7.5X = -5X","8X+8 = 4X+2","18X+10 = 4(4X+3)+2X-2","17(2X+9) = 40X+145-6X"]
   },
-  3822: {//SET UP
-    type: ["text","table","table","table","table","table"],
-	data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
-    question: ["","","","","",""],
-    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
-	correctans: [0,0,0,0,0,0],
-	text: [""]
+  3822: {
+    type: ["text","text","text","text","text","text"],
+	data: [],
+    question: ["How many solutions","How many solutions","How many solutions","How many solutions","How many solutions","How many solutions"],
+    answers: ["One Solution","No Solution","Infinite Solutions"  ,"One Solution","No Solution","Infinite Solutions"  ,"One Solution","No Solution","Infinite Solutions"  ,"One Solution","No Solution","Infinite Solutions"  ,"One Solution","No Solution","Infinite Solutions"  ,"One Solution","No Solution","Infinite Solutions"],
+	correctans: [3,1,3,2,1,2],
+	text: ["Lesson 1 Continued, Figuring out total solutions. 2(X+3) = 2X+6","2(X-3) = 4X-10","4x-7 = 2(2X+1)-9","4X+2 = 4X-6","7X-5 = 3X+11","7(X+2) = 7X+10"]
   },
-  3823: {//SET UP
-    type: ["text","table","table","table","table","table"],
-    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
-    question: ["","","","","",""],
-    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
-	correctans: [0,0,0,0,0,0],
-	text: [""]
+  3823: {
+    type: ["text","text","text","text","text","text"],
+	data: [],
+    question: ["How many solutions","How many solutions","How many solutions","How many solutions","How many solutions","How many solutions"],
+    answers: ["One Solution","No Solution","Infinite Solutions"  ,"One Solution","No Solution","Infinite Solutions"  ,"One Solution","No Solution","Infinite Solutions"  ,"One Solution","No Solution","Infinite Solutions"  ,"One Solution","No Solution","Infinite Solutions"  ,"One Solution","No Solution","Infinite Solutions"],
+	correctans: [1,2,2,3,1,1],
+	text: ["Lesson 2 Continued, 8X+2 = 4(X-2)+10","2(3X-1)+4 = 6X+1","5X+8 = 5X-3","6(X-1) = 6X-1","3(X+1) = 2X+5","5X-7 = 3X+1"]
   },
-  3824: {//SET UP
-    type: ["text","table","table","table","table","table"],
-    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
-    question: ["","","","","",""],
-    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
-	correctans: [0,0,0,0,0,0],
-	text: [""]
+  3824: {
+    type: ["text","text","text","text","text","text"],
+    data: [],
+    question: ["How many solutions","How many solutions","How many solutions","How many solutions","How many solutions","How many solutions"],
+    answers: ["One Solution","No Solution","Infinite Solutions"  ,"One Solution","No Solution","Infinite Solutions"  ,"One Solution","No Solution","Infinite Solutions"  ,"One Solution","No Solution","Infinite Solutions"  ,"One Solution","No Solution","Infinite Solutions"  ,"One Solution","No Solution","Infinite Solutions"],
+	correctans: [2,1,2,3,2,1],
+	text: ["Lesson 3 Continued, 3(X+4) = 3X+10","4(X-1) = 2X+6","2X+7 = 2X-1","3X+2 = 2(X+1)+X","5(X+3)-2 = 5X +10","5X+3 = 2X+12"]
   },
-  
+ 
   3831: {//SET UP
-    type: ["text","table","table","table","table","table"],
+    type: ["text","text","text","text","text","text"],
     data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
     question: ["","","","","",""],
     answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
@@ -428,7 +428,7 @@ const lessons = {
 	correctans: [0,0,0,0,0,0],
 	text: [""]
   },
-  
+ 
   3841: {//SET UP
     type: ["text","table","table","table","table","table"],
     data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
@@ -461,7 +461,7 @@ const lessons = {
 	correctans: [0,0,0,0,0,0],
 	text: [""]
   },
-  
+ 
   3851: {//SET UP
     type: ["text","table","table","table","table","table"],
     data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
@@ -493,590 +493,1086 @@ const lessons = {
     answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
 	correctans: [0,0,0,0,0,0],
 	text: [""]
+  },
+  
+  3911: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  3912: {//SET UP
+    type: ["text","table","table","table","table","table"],
+	data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  3913: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  3914: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+
+  3921: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  3922: {//SET UP
+    type: ["text","table","table","table","table","table"],
+	data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  3923: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  3924: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+ 
+  3931: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  3932: {//SET UP
+    type: ["text","table","table","table","table","table"],
+	data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  3933: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  3934: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+ 
+  3941: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  3942: {//SET UP
+    type: ["text","table","table","table","table","table"],
+	data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  3943: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  3944: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+ 
+  3951: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  3952: {//SET UP
+    type: ["text","table","table","table","table","table"],
+	data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  3953: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  3954: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+
+  31011: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31012: {//SET UP
+    type: ["text","table","table","table","table","table"],
+	data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31013: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31014: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+
+  31021: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31022: {//SET UP
+    type: ["text","table","table","table","table","table"],
+	data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31023: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31024: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+ 
+  31031: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31032: {//SET UP
+    type: ["text","table","table","table","table","table"],
+	data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31033: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31034: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+ 
+  31041: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31042: {//SET UP
+    type: ["text","table","table","table","table","table"],
+	data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31043: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31044: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+ 
+  31051: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31052: {//SET UP
+    type: ["text","table","table","table","table","table"],
+	data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31053: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31054: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  
+  31111: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31112: {//SET UP
+    type: ["text","table","table","table","table","table"],
+	data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31113: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31114: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+
+  31121: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31122: {//SET UP
+    type: ["text","table","table","table","table","table"],
+	data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31123: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31124: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+ 
+  31131: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31132: {//SET UP
+    type: ["text","table","table","table","table","table"],
+	data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31133: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31134: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+ 
+  31141: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31142: {//SET UP
+    type: ["text","table","table","table","table","table"],
+	data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31143: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31144: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+ 
+  31151: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31152: {//SET UP
+    type: ["text","table","table","table","table","table"],
+	data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31153: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
+  },
+  31154: {//SET UP
+    type: ["text","table","table","table","table","table"],
+    data: [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}, {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}  ,{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0}],
+    question: ["","","","","",""],
+    answers: [0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0  ,0,0,0],
+	correctans: [0,0,0,0,0,0],
+	text: [""]
   }
+  
 }
-const titles = {
-  1811: "English grade eight unit one lesson one",
-  1812: "English grade eight unit one lesson two",
-  1813: "English grade eight unit one lesson three",
-  1814: "English grade eight unit one lesson four",
-  1821: "English grade eight unit two lesson one",
-  1822: "English grade eight unit two lesson two",
-  1823: "English grade eight unit two lesson three",
-  1824: "English grade eight unit two lesson four",
-  1831: "English grade eight unit three lesson one",
-  1832: "English grade eight unit three lesson two",
-  1833: "English grade eight unit three lesson three",
-  1834: "English grade eight unit three lesson four",
-  1841: "English grade eight unit four lesson one",
-  1842: "English grade eight unit four lesson two",
-  1843: "English grade eight unit four lesson three",
-  1844: "English grade eight unit four lesson four",
-  1851: "English grade eight unit five lesson one",
-  1852: "English grade eight unit five lesson two",
-  1853: "English grade eight unit five lesson three",
-  1854: "English grade eight unit five lesson four",
-
-  2811: "Science grade eight unit one lesson one",
-  2812: "Science grade eight unit one lesson two",
-  2813: "Science grade eight unit one lesson three",
-  2814: "Science grade eight unit one lesson four",
-  2821: "Science grade eight unit two lesson one",
-  2822: "Science grade eight unit two lesson two",
-  2823: "Science grade eight unit two lesson three",
-  2824: "Science grade eight unit two lesson four",
-  2831: "Science grade eight unit three lesson one",
-  2832: "Science grade eight unit three lesson two",
-  2833: "Science grade eight unit three lesson three",
-  2834: "Science grade eight unit three lesson four",
-  2841: "Science grade eight unit four lesson one",
-  2842: "Science grade eight unit four lesson two",
-  2843: "Science grade eight unit four lesson three",
-  2844: "Science grade eight unit four lesson four",
-  2851: "Science grade eight unit five lesson one",
-  2852: "Science grade eight unit five lesson two",
-  2853: "Science grade eight unit five lesson three",
-  2854: "Science grade eight unit five lesson four",
-
-  3811: "Slope",
-  3812: "Lesson 1 Continued",
-  3813: "Slope-intercept, Y = MX + B",
-  3814: "Lesson 3 Continued",
-  3821: "Math grade eight unit two lesson one",
-  3822: "Math grade eight unit two lesson two",
-  3823: "Math grade eight unit two lesson three",
-  3824: "Math grade eight unit two lesson four",
-  3831: "Math grade eight unit three lesson one",
-  3832: "Math grade eight unit three lesson two",
-  3833: "Math grade eight unit three lesson three",
-  3834: "Math grade eight unit three lesson four",
-  3841: "Math grade eight unit four lesson one",
-  3842: "Math grade eight unit four lesson two",
-  3843: "Math grade eight unit four lesson three",
-  3844: "Math grade eight unit four lesson four",
-  3851: "Math grade eight unit five lesson one",
-  3852: "Math grade eight unit five lesson two",
-  3853: "Math grade eight unit five lesson three",
-  3854: "Math grade eight unit five lesson four",
-  
-  4811: "History grade eight unit one lesson one",
-  4812: "History grade eight unit one lesson two",
-  4813: "History grade eight unit one lesson three",
-  4814: "History grade eight unit one lesson four",
-  4821: "History grade eight unit two lesson one",
-  4822: "History grade eight unit two lesson two",
-  4823: "History grade eight unit two lesson three",
-  4824: "History grade eight unit two lesson four",
-  4831: "History grade eight unit three lesson one",
-  4832: "History grade eight unit three lesson two",
-  4833: "History grade eight unit three lesson three",
-  4834: "History grade eight unit three lesson four",
-  4841: "History grade eight unit four lesson one",
-  4842: "History grade eight unit four lesson two",
-  4843: "History grade eight unit four lesson three",
-  4844: "History grade eight unit four lesson four",
-  4851: "History grade eight unit five lesson one",
-  4852: "History grade eight unit five lesson two",
-  4853: "History grade eight unit five lesson three",
-  4854: "History grade eight unit five lesson four",
-    
-  
-  1911: "English grade nine unit one lesson one",
-  1912: "English grade nine unit one lesson two",
-  1913: "English grade nine unit one lesson three",
-  1914: "English grade nine unit one lesson four",
-  1921: "English grade nine unit two lesson one",
-  1922: "English grade nine unit two lesson two",
-  1923: "English grade nine unit two lesson three",
-  1924: "English grade nine unit two lesson four",
-  1931: "English grade nine unit three lesson one",
-  1932: "English grade nine unit three lesson two",
-  1933: "English grade nine unit three lesson three",
-  1934: "English grade nine unit three lesson four",
-  1941: "English grade nine unit four lesson one",
-  1942: "English grade nine unit four lesson two",
-  1943: "English grade nine unit four lesson three",
-  1944: "English grade nine unit four lesson four",
-  1951: "English grade nine unit five lesson one",
-  1952: "English grade nine unit five lesson two",
-  1953: "English grade nine unit five lesson three",
-  1954: "English grade nine unit five lesson four",
-
-  2911: "Science grade nine unit one lesson one",
-  2912: "Science grade nine unit one lesson two",
-  2913: "Science grade nine unit one lesson three",
-  2914: "Science grade nine unit one lesson four",
-  2921: "Science grade nine unit two lesson one",
-  2922: "Science grade nine unit two lesson two",
-  2923: "Science grade nine unit two lesson three",
-  2924: "Science grade nine unit two lesson four",
-  2931: "Science grade nine unit three lesson one",
-  2932: "Science grade nine unit three lesson two",
-  2933: "Science grade nine unit three lesson three",
-  2934: "Science grade nine unit three lesson four",
-  2941: "Science grade nine unit four lesson one",
-  2942: "Science grade nine unit four lesson two",
-  2943: "Science grade nine unit four lesson three",
-  2944: "Science grade nine unit four lesson four",
-  2951: "Science grade nine unit five lesson one",
-  2952: "Science grade nine unit five lesson two",
-  2953: "Science grade nine unit five lesson three",
-  2954: "Science grade nine unit five lesson four",
-
-  3911: "Math grade nine unit one lesson one",
-  3912: "Math grade nine unit one lesson two",
-  3913: "Math grade nine unit one lesson three",
-  3914: "Math grade nine unit one lesson four",
-  3921: "Math grade nine unit two lesson one",
-  3922: "Math grade nine unit two lesson two",
-  3923: "Math grade nine unit two lesson three",
-  3924: "Math grade nine unit two lesson four",
-  3931: "Math grade nine unit three lesson one",
-  3932: "Math grade nine unit three lesson two",
-  3933: "Math grade nine unit three lesson three",
-  3934: "Math grade nine unit three lesson four",
-  3941: "Math grade nine unit four lesson one",
-  3942: "Math grade nine unit four lesson two",
-  3943: "Math grade nine unit four lesson three",
-  3944: "Math grade nine unit four lesson four",
-  3951: "Math grade nine unit five lesson one",
-  3952: "Math grade nine unit five lesson two",
-  3953: "Math grade nine unit five lesson three",
-  3954: "Math grade nine unit five lesson four",
-  
-  4911: "History grade nine unit one lesson one",
-  4912: "History grade nine unit one lesson two",
-  4913: "History grade nine unit one lesson three",
-  4914: "History grade nine unit one lesson four",
-  4921: "History grade nine unit two lesson one",
-  4922: "History grade nine unit two lesson two",
-  4923: "History grade nine unit two lesson three",
-  4924: "History grade nine unit two lesson four",
-  4931: "History grade nine unit three lesson one",
-  4932: "History grade nine unit three lesson two",
-  4933: "History grade nine unit three lesson three",
-  4934: "History grade nine unit three lesson four",
-  4941: "History grade nine unit four lesson one",
-  4942: "History grade nine unit four lesson two",
-  4943: "History grade nine unit four lesson three",
-  4944: "History grade nine unit four lesson four",
-  4951: "History grade nine unit five lesson one",
-  4952: "History grade nine unit five lesson two",
-  4953: "History grade nine unit five lesson three",
-  4954: "History grade nine unit five lesson four",
-  
-  
-  11011: "English grade ten unit one lesson one",
-  11012: "English grade ten unit one lesson two",
-  11013: "English grade ten unit one lesson three",
-  11014: "English grade ten unit one lesson four",
-  11021: "English grade ten unit two lesson one",
-  11022: "English grade ten unit two lesson two",
-  11023: "English grade ten unit two lesson three",
-  11024: "English grade ten unit two lesson four",
-  11031: "English grade ten unit three lesson one",
-  11032: "English grade ten unit three lesson two",
-  11033: "English grade ten unit three lesson three",
-  11034: "English grade ten unit three lesson four",
-  11041: "English grade ten unit four lesson one",
-  11042: "English grade ten unit four lesson two",
-  11043: "English grade ten unit four lesson three",
-  11044: "English grade ten unit four lesson four",
-  11051: "English grade ten unit five lesson one",
-  11052: "English grade ten unit five lesson two",
-  11053: "English grade ten unit five lesson three",
-  11054: "English grade ten unit five lesson four",
-
-  21011: "Science grade ten unit one lesson one",
-  21012: "Science grade ten unit one lesson two",
-  21013: "Science grade ten unit one lesson three",
-  21014: "Science grade ten unit one lesson four",
-  21021: "Science grade ten unit two lesson one",
-  21022: "Science grade ten unit two lesson two",
-  21023: "Science grade ten unit two lesson three",
-  21024: "Science grade ten unit two lesson four",
-  21031: "Science grade ten unit three lesson one",
-  21032: "Science grade ten unit three lesson two",
-  21033: "Science grade ten unit three lesson three",
-  21034: "Science grade ten unit three lesson four",
-  21041: "Science grade ten unit four lesson one",
-  21042: "Science grade ten unit four lesson two",
-  21043: "Science grade ten unit four lesson three",
-  21044: "Science grade ten unit four lesson four",
-  21051: "Science grade ten unit five lesson one",
-  21052: "Science grade ten unit five lesson two",
-  21053: "Science grade ten unit five lesson three",
-  21054: "Science grade ten unit five lesson four",
-
-  31011: "Math grade ten unit one lesson one",
-  31012: "Math grade ten unit one lesson two",
-  31013: "Math grade ten unit one lesson three",
-  31014: "Math grade ten unit one lesson four",
-  31021: "Math grade ten unit two lesson one",
-  31022: "Math grade ten unit two lesson two",
-  31023: "Math grade ten unit two lesson three",
-  31024: "Math grade ten unit two lesson four",
-  31031: "Math grade ten unit three lesson one",
-  31032: "Math grade ten unit three lesson two",
-  31033: "Math grade ten unit three lesson three",
-  31034: "Math grade ten unit three lesson four",
-  31041: "Math grade ten unit four lesson one",
-  31042: "Math grade ten unit four lesson two",
-  31043: "Math grade ten unit four lesson three",
-  31044: "Math grade ten unit four lesson four",
-  31051: "Math grade ten unit five lesson one",
-  31052: "Math grade ten unit five lesson two",
-  31053: "Math grade ten unit five lesson three",
-  31054: "Math grade ten unit five lesson four",
-  
-  41011: "History grade ten unit one lesson one",
-  41012: "History grade ten unit one lesson two",
-  41013: "History grade ten unit one lesson three",
-  41014: "History grade ten unit one lesson four",
-  41021: "History grade ten unit two lesson one",
-  41022: "History grade ten unit two lesson two",
-  41023: "History grade ten unit two lesson three",
-  41024: "History grade ten unit two lesson four",
-  41031: "History grade ten unit three lesson one",
-  41032: "History grade ten unit three lesson two",
-  41033: "History grade ten unit three lesson three",
-  41034: "History grade ten unit three lesson four",
-  41041: "History grade ten unit four lesson one",
-  41042: "History grade ten unit four lesson two",
-  41043: "History grade ten unit four lesson three",
-  41044: "History grade ten unit four lesson four",
-  41051: "History grade ten unit five lesson one",
-  41052: "History grade ten unit five lesson two",
-  41053: "History grade ten unit five lesson three",
-  41054: "History grade ten unit five lesson four",
-  
-    
-  11111: "English grade eleven unit one lesson one",
-  11112: "English grade eleven unit one lesson two",
-  11113: "English grade eleven unit one lesson three",
-  11114: "English grade eleven unit one lesson four",
-  11121: "English grade eleven unit two lesson one",
-  11122: "English grade eleven unit two lesson two",
-  11123: "English grade eleven unit two lesson three",
-  11124: "English grade eleven unit two lesson four",
-  11131: "English grade eleven unit three lesson one",
-  11132: "English grade eleven unit three lesson two",
-  11133: "English grade eleven unit three lesson three",
-  11134: "English grade eleven unit three lesson four",
-  11141: "English grade eleven unit four lesson one",
-  11142: "English grade eleven unit four lesson two",
-  11143: "English grade eleven unit four lesson three",
-  11144: "English grade eleven unit four lesson four",
-  11151: "English grade eleven unit five lesson one",
-  11152: "English grade eleven unit five lesson two",
-  11153: "English grade eleven unit five lesson three",
-  11154: "English grade eleven unit five lesson four",
-
-  21111: "Science grade eleven unit one lesson one",
-  21112: "Science grade eleven unit one lesson two",
-  21113: "Science grade eleven unit one lesson three",
-  21114: "Science grade eleven unit one lesson four",
-  21121: "Science grade eleven unit two lesson one",
-  21122: "Science grade eleven unit two lesson two",
-  21123: "Science grade eleven unit two lesson three",
-  21124: "Science grade eleven unit two lesson four",
-  21131: "Science grade eleven unit three lesson one",
-  21132: "Science grade eleven unit three lesson two",
-  21133: "Science grade eleven unit three lesson three",
-  21134: "Science grade eleven unit three lesson four",
-  21141: "Science grade eleven unit four lesson one",
-  21142: "Science grade eleven unit four lesson two",
-  21143: "Science grade eleven unit four lesson three",
-  21144: "Science grade eleven unit four lesson four",
-  21151: "Science grade eleven unit five lesson one",
-  21152: "Science grade eleven unit five lesson two",
-  21153: "Science grade eleven unit five lesson three",
-  21154: "Science grade eleven unit five lesson four",
-
-  31111: "Math grade eleven unit one lesson one",
-  31112: "Math grade eleven unit one lesson two",
-  31113: "Math grade eleven unit one lesson three",
-  31114: "Math grade eleven unit one lesson four",
-  31121: "Math grade eleven unit two lesson one",
-  31122: "Math grade eleven unit two lesson two",
-  31123: "Math grade eleven unit two lesson three",
-  31124: "Math grade eleven unit two lesson four",
-  31131: "Math grade eleven unit three lesson one",
-  31132: "Math grade eleven unit three lesson two",
-  31133: "Math grade eleven unit three lesson three",
-  31134: "Math grade eleven unit three lesson four",
-  31141: "Math grade eleven unit four lesson one",
-  31142: "Math grade eleven unit four lesson two",
-  31143: "Math grade eleven unit four lesson three",
-  31144: "Math grade eleven unit four lesson four",
-  31151: "Math grade eleven unit five lesson one",
-  31152: "Math grade eleven unit five lesson two",
-  31153: "Math grade eleven unit five lesson three",
-  31154: "Math grade eleven unit five lesson four",
-  
-  41111: "History grade eleven unit one lesson one",
-  41112: "History grade eleven unit one lesson two",
-  41113: "History grade eleven unit one lesson three",
-  41114: "History grade eleven unit one lesson four",
-  41121: "History grade eleven unit two lesson one",
-  41122: "History grade eleven unit two lesson two",
-  41123: "History grade eleven unit two lesson three",
-  41124: "History grade eleven unit two lesson four",
-  41131: "History grade eleven unit three lesson one",
-  41132: "History grade eleven unit three lesson two",
-  41133: "History grade eleven unit three lesson three",
-  41134: "History grade eleven unit three lesson four",
-  41141: "History grade eleven unit four lesson one",
-  41142: "History grade eleven unit four lesson two",
-  41143: "History grade eleven unit four lesson three",
-  41144: "History grade eleven unit four lesson four",
-  41151: "History grade eleven unit five lesson one",
-  41152: "History grade eleven unit five lesson two",
-  41153: "History grade eleven unit five lesson three",
-  41154: "History grade eleven unit five lesson four",
-};
-
-const colors = ["#ff706a","#61f95c","#599aea","#ffed50"]
-var temp, test, dataPoints, correctans, answers, color, subjecttxt, subject, grade, unit
-	function showPage(pageId, back, lesson) {
-		const pages = document.querySelectorAll('.page');
-		pages.forEach(page => page.classList.remove('active'));
-		document.getElementById(pageId).classList.add('active');
-		if (pageId == "page2" && back != 1){
-			const heading = document.getElementById("page2text");
-			const itema = document.querySelectorAll('.item2');
-			itema.forEach(item => item.style.backgroundColor = color);
-			const itemb = document.querySelectorAll('.item3');
-			itemb.forEach(item => item.style.backgroundColor = color);
-			if (heading) heading.textContent = subjecttxt;
-		}else if (pageId == "page3" && back != 1){
-			const heading = document.getElementById("page3text");
-			if (heading) heading.textContent = "Grade " + grade;
-		}else if (pageId == "page4" && back != 1){
-			const heading = document.getElementById("page4text");
-			if (heading) heading.textContent = subjecttxt + ", Grade " + grade + ", Unit " + unit;
-			console.log(subject, grade, unit)
-		}else if (pageId == "page5"){
-			const heading = document.getElementById("page5text");
-			if (heading) heading.textContent = titles[`${subject}${grade}${unit}${lesson}`];
-			temp = lessons[`${subject}${grade}${unit}${lesson}`]
-			answers = temp.answers
-			correctans = temp.correctans
-			dataPoints = temp.data
-			text = temp.text
-			loadquestion(temp.type ,temp.question ,1)
-			loadquestion(temp.type ,temp.question ,2)
-			loadquestion(temp.type ,temp.question ,3)
-			loadquestion(temp.type ,temp.question ,4)
-			loadquestion(temp.type ,temp.question ,5)
-			loadquestion(temp.type ,temp.question ,6)
-		}
-	}
-	function back(pageId){
-		showPage(pageId,1)
-	}
-	function select(id){
-		const options = ["English","Science","Math","History",8,9,10,11,1,2,3,4,5]
-		if (id <= 3){
-		subject = id+1
-		subjecttxt = options[id]
-		color = colors[id]
-		showPage("page2", 0)
-		}else if(id <= 7){
-		grade = options[id]
-		showPage("page3", 0)
-		}else if(id <= 12){
-		unit = options[id]
-		showPage("page4", 0)
-		}
-	}
-	function answer(a,b){
-	if (b == correctans[a-1]){
-	// future set a point in an array to 1 if correct and set whole array to 0 when new lesson is loaded then check on each answer if whole array is 1s if so lesson done add lesson id to another array to be used to determine completed lessons
-	
-	console.log("correct")
-	var selected = document.getElementById("c"+a+"ans"+b);
-	if (selected) {
-		selected.parentElement.style.backgroundColor = "green"
-		setTimeout(() => {
-		selected.parentElement.style.backgroundColor = "#EEEEEE"
-		}, 500);
-	};
-	}else {
-	console.log("incorrect")
-	var selected = document.getElementById("c"+a+"ans"+b);
-	if (selected) {
-		selected.parentElement.style.backgroundColor = "red"
-		setTimeout(() => {
-		selected.parentElement.style.backgroundColor = "#EEEEEE"
-		}, 500);
-	};
-	}
-	}
-	function loadquestion(type,question,canvasNum){
-	var selected = document.getElementById("c"+canvasNum+"cont");
-	if (selected) selected.style.backgroundColor = "white";
-	selected = document.getElementById("c"+canvasNum+"qus");
-	if (selected) selected.textContent = question[canvasNum-1];
-	selected = document.getElementById("c"+canvasNum+"ans1");
-	if (selected) selected.textContent = answers[canvasNum*3-3];
-	selected = document.getElementById("c"+canvasNum+"ans2");
-	if (selected) selected.textContent = answers[canvasNum*3-2];
-	selected = document.getElementById("c"+canvasNum+"ans3");
-	if (selected) selected.textContent = answers[canvasNum*3-1];
-	
-	const container = document.getElementById("c" + canvasNum + "cont");
-	container.innerHTML = "";
-	if (type[canvasNum-1] == "graph"){
-	console.log("graph")
-		const canvas = document.createElement("canvas");
-		canvas.id = "chart" + canvasNum;
-		container.appendChild(canvas);
-		canvas.style.width = "100%";
-		canvas.style.height = "100%";
-		const slicedPoints = dataPoints.slice((canvasNum - 1) * 4, canvasNum * 4);
-		new Chart(canvas, {
-			  type: 'line',
-			  data: {
-				datasets: [{
-				  label: "Line " + canvasNum,
-				  data: slicedPoints,
-				  borderColor: "#000",
-				  backgroundColor: "rgba(0,0,0,0.1)",
-				  borderWidth: 3,
-				  tension: 0.3
-				}]
-			  },
-			  options: {
-				responsive: true,
-				maintainAspectRatio: false,
-				scales: {
-				  x: {
-					type: "linear",
-					position: "bottom",
-					ticks: {
-					  color: "#000",
-					  stepSize: 1
-					},
-					beginAtZero: true
-				  },
-				  y: {
-					ticks: {
-					  color: "#000",
-					  stepSize: 1
-					},
-					beginAtZero: true
-				  }
-				},
-				plugins: {
-				  legend: {
-					labels: {
-					  color: "#000"
-					}
-				  }
-				}
-			  },
-			  plugins: [{
-				id: 'customCanvasBackgroundColor',
-				beforeDraw: (chart) => {
-				  const ctx = chart.canvas.getContext('2d');
-				  ctx.save();
-				  ctx.globalCompositeOperation = 'destination-over';
-				  ctx.fillStyle = 'white';
-				  ctx.fillRect(0, 0, chart.width, chart.height);
-				  ctx.restore();
-				}
-			  }]
-			});
-	} else if (type[canvasNum-1] == "table"){
-	console.log("table")
-	const table = document.createElement("table");
-	table.id = "table" + canvasNum;
-	container.appendChild(table);
-	table.style.width = "100%";
-	table.style.height = "100%";
-	table.style.borderCollapse = "collapse";
-	table.style.marginBottom = "20px";
-	table.style.border = "1px solid black";
-	table.style.color = "#000";
-	const slicedPoints = dataPoints.slice((canvasNum - 1) * 4, canvasNum * 4);
-	const thead = document.createElement("thead");
-	const headerRow = document.createElement("tr");
-	["X", "Y"].forEach((headerText) => {
-	  const th = document.createElement("th");
-	  th.innerText = headerText;
-	  th.style.border = "1px solid black";
-	  th.style.padding = "8px";
-	  th.style.backgroundColor = "#f0f0f0";
-	  headerRow.appendChild(th);
-	});
-	thead.appendChild(headerRow);
-	table.appendChild(thead);
-	const tbody = document.createElement("tbody");
-	slicedPoints.forEach((point) => {
-	  const row = document.createElement("tr");
-	  [point.x, point.y].forEach((value) => {
-		const td = document.createElement("td");
-		td.innerText = value;
-		td.style.border = "1px solid black";
-		td.style.padding = "8px";
-		row.appendChild(td);
-	  });
-	  tbody.appendChild(row);
-	});
-	table.appendChild(tbody);
-	} else if (type[canvasNum-1] == "table"){
-	console.log("table")
-	const table = document.createElement("table");
-	table.id = "table" + canvasNum;
-	container.appendChild(table);
-	table.style.width = "100%";
-	table.style.height = "100%";
-	table.style.borderCollapse = "collapse";
-	table.style.marginBottom = "20px";
-	table.style.border = "1px solid black";
-	table.style.color = "#000";
-	const slicedPoints = dataPoints.slice((canvasNum - 1) * 4, canvasNum * 4);
-	const thead = document.createElement("thead");
-	const headerRow = document.createElement("tr");
-	["X", "Y"].forEach((headerText) => {
-	  const th = document.createElement("th");
-	  th.innerText = headerText;
-	  th.style.border = "1px solid black";
-	  th.style.padding = "8px";
-	  th.style.backgroundColor = "#f0f0f0";
-	  headerRow.appendChild(th);
-	});
-	thead.appendChild(headerRow);
-	table.appendChild(thead);
-	const tbody = document.createElement("tbody");
-	slicedPoints.forEach((point) => {
-	  const row = document.createElement("tr");
-	  [point.x, point.y].forEach((value) => {
-		const td = document.createElement("td");
-		td.innerText = value;
-		td.style.border = "1px solid black";
-		td.style.padding = "8px";
-		row.appendChild(td);
-	  });
-	  tbody.appendChild(row);
-	});
-	table.appendChild(tbody);
-	}else if (type[canvasNum-1] == "text"){
-	console.log("text")
-	  const heading = document.createElement("h1");
-	  heading.id = "textbox" + canvasNum;
-	  heading.style.color = "#000";
-	  heading.style.marginBottom = "20px";
-	  heading.style.fontSize = "24px";
-	  heading.style.fontWeight = "normal";
-	  heading.style.whiteSpace = "pre-wrap";
-	  heading.style.margin = "8px";
-	  let textContent = text[canvasNum-1];
-	  heading.innerText = textContent.trim();
-	  container.appendChild(heading);
-	}
-	}
-</script>
-</body>
-</html>
+  const titles = {
+    1811: "English grade eight unit one lesson one",
+    1812: "English grade eight unit one lesson two",
+    1813: "English grade eight unit one lesson three",
+    1814: "English grade eight unit one lesson four",
+    1821: "English grade eight unit two lesson one",
+    1822: "English grade eight unit two lesson two",
+    1823: "English grade eight unit two lesson three",
+    1824: "English grade eight unit two lesson four",
+    1831: "English grade eight unit three lesson one",
+    1832: "English grade eight unit three lesson two",
+    1833: "English grade eight unit three lesson three",
+    1834: "English grade eight unit three lesson four",
+    1841: "English grade eight unit four lesson one",
+    1842: "English grade eight unit four lesson two",
+    1843: "English grade eight unit four lesson three",
+    1844: "English grade eight unit four lesson four",
+    1851: "English grade eight unit five lesson one",
+    1852: "English grade eight unit five lesson two",
+    1853: "English grade eight unit five lesson three",
+    1854: "English grade eight unit five lesson four",
+ 
+    2811: "Science grade eight unit one lesson one",
+    2812: "Science grade eight unit one lesson two",
+    2813: "Science grade eight unit one lesson three",
+    2814: "Science grade eight unit one lesson four",
+    2821: "Science grade eight unit two lesson one",
+    2822: "Science grade eight unit two lesson two",
+    2823: "Science grade eight unit two lesson three",
+    2824: "Science grade eight unit two lesson four",
+    2831: "Science grade eight unit three lesson one",
+    2832: "Science grade eight unit three lesson two",
+    2833: "Science grade eight unit three lesson three",
+    2834: "Science grade eight unit three lesson four",
+    2841: "Science grade eight unit four lesson one",
+    2842: "Science grade eight unit four lesson two",
+    2843: "Science grade eight unit four lesson three",
+    2844: "Science grade eight unit four lesson four",
+    2851: "Science grade eight unit five lesson one",
+    2852: "Science grade eight unit five lesson two",
+    2853: "Science grade eight unit five lesson three",
+    2854: "Science grade eight unit five lesson four",
+ 
+    3811: "Slope",
+    3812: "Lesson 1 Continued",
+    3813: "Slope-intercept, Y = MX + B",
+    3814: "Lesson 3 Continued",
+    3821: "Solving Linear Equations",
+    3822: "Lesson 1 Continued",
+    3823: "Lesson 2 Continued",
+    3824: "Lesson 3 Continued",
+    3831: "Math grade eight unit three lesson one",
+    3832: "Math grade eight unit three lesson two",
+    3833: "Math grade eight unit three lesson three",
+    3834: "Math grade eight unit three lesson four",
+    3841: "Math grade eight unit four lesson one",
+    3842: "Math grade eight unit four lesson two",
+    3843: "Math grade eight unit four lesson three",
+    3844: "Math grade eight unit four lesson four",
+    3851: "Math grade eight unit five lesson one",
+    3852: "Math grade eight unit five lesson two",
+    3853: "Math grade eight unit five lesson three",
+    3854: "Math grade eight unit five lesson four",
+   
+    4811: "History grade eight unit one lesson one",
+    4812: "History grade eight unit one lesson two",
+    4813: "History grade eight unit one lesson three",
+    4814: "History grade eight unit one lesson four",
+    4821: "History grade eight unit two lesson one",
+    4822: "History grade eight unit two lesson two",
+    4823: "History grade eight unit two lesson three",
+    4824: "History grade eight unit two lesson four",
+    4831: "History grade eight unit three lesson one",
+    4832: "History grade eight unit three lesson two",
+    4833: "History grade eight unit three lesson three",
+    4834: "History grade eight unit three lesson four",
+    4841: "History grade eight unit four lesson one",
+    4842: "History grade eight unit four lesson two",
+    4843: "History grade eight unit four lesson three",
+    4844: "History grade eight unit four lesson four",
+    4851: "History grade eight unit five lesson one",
+    4852: "History grade eight unit five lesson two",
+    4853: "History grade eight unit five lesson three",
+    4854: "History grade eight unit five lesson four",
+     
+   
+    1911: "English grade nine unit one lesson one",
+    1912: "English grade nine unit one lesson two",
+    1913: "English grade nine unit one lesson three",
+    1914: "English grade nine unit one lesson four",
+    1921: "English grade nine unit two lesson one",
+    1922: "English grade nine unit two lesson two",
+    1923: "English grade nine unit two lesson three",
+    1924: "English grade nine unit two lesson four",
+    1931: "English grade nine unit three lesson one",
+    1932: "English grade nine unit three lesson two",
+    1933: "English grade nine unit three lesson three",
+    1934: "English grade nine unit three lesson four",
+    1941: "English grade nine unit four lesson one",
+    1942: "English grade nine unit four lesson two",
+    1943: "English grade nine unit four lesson three",
+    1944: "English grade nine unit four lesson four",
+    1951: "English grade nine unit five lesson one",
+    1952: "English grade nine unit five lesson two",
+    1953: "English grade nine unit five lesson three",
+    1954: "English grade nine unit five lesson four",
+ 
+    2911: "Science grade nine unit one lesson one",
+    2912: "Science grade nine unit one lesson two",
+    2913: "Science grade nine unit one lesson three",
+    2914: "Science grade nine unit one lesson four",
+    2921: "Science grade nine unit two lesson one",
+    2922: "Science grade nine unit two lesson two",
+    2923: "Science grade nine unit two lesson three",
+    2924: "Science grade nine unit two lesson four",
+    2931: "Science grade nine unit three lesson one",
+    2932: "Science grade nine unit three lesson two",
+    2933: "Science grade nine unit three lesson three",
+    2934: "Science grade nine unit three lesson four",
+    2941: "Science grade nine unit four lesson one",
+    2942: "Science grade nine unit four lesson two",
+    2943: "Science grade nine unit four lesson three",
+    2944: "Science grade nine unit four lesson four",
+    2951: "Science grade nine unit five lesson one",
+    2952: "Science grade nine unit five lesson two",
+    2953: "Science grade nine unit five lesson three",
+    2954: "Science grade nine unit five lesson four",
+ 
+    3911: "Math grade nine unit one lesson one",
+    3912: "Math grade nine unit one lesson two",
+    3913: "Math grade nine unit one lesson three",
+    3914: "Math grade nine unit one lesson four",
+    3921: "Math grade nine unit two lesson one",
+    3922: "Math grade nine unit two lesson two",
+    3923: "Math grade nine unit two lesson three",
+    3924: "Math grade nine unit two lesson four",
+    3931: "Math grade nine unit three lesson one",
+    3932: "Math grade nine unit three lesson two",
+    3933: "Math grade nine unit three lesson three",
+    3934: "Math grade nine unit three lesson four",
+    3941: "Math grade nine unit four lesson one",
+    3942: "Math grade nine unit four lesson two",
+    3943: "Math grade nine unit four lesson three",
+    3944: "Math grade nine unit four lesson four",
+    3951: "Math grade nine unit five lesson one",
+    3952: "Math grade nine unit five lesson two",
+    3953: "Math grade nine unit five lesson three",
+    3954: "Math grade nine unit five lesson four",
+   
+    4911: "History grade nine unit one lesson one",
+    4912: "History grade nine unit one lesson two",
+    4913: "History grade nine unit one lesson three",
+    4914: "History grade nine unit one lesson four",
+    4921: "History grade nine unit two lesson one",
+    4922: "History grade nine unit two lesson two",
+    4923: "History grade nine unit two lesson three",
+    4924: "History grade nine unit two lesson four",
+    4931: "History grade nine unit three lesson one",
+    4932: "History grade nine unit three lesson two",
+    4933: "History grade nine unit three lesson three",
+    4934: "History grade nine unit three lesson four",
+    4941: "History grade nine unit four lesson one",
+    4942: "History grade nine unit four lesson two",
+    4943: "History grade nine unit four lesson three",
+    4944: "History grade nine unit four lesson four",
+    4951: "History grade nine unit five lesson one",
+    4952: "History grade nine unit five lesson two",
+    4953: "History grade nine unit five lesson three",
+    4954: "History grade nine unit five lesson four",
+   
+   
+    11011: "English grade ten unit one lesson one",
+    11012: "English grade ten unit one lesson two",
+    11013: "English grade ten unit one lesson three",
+    11014: "English grade ten unit one lesson four",
+    11021: "English grade ten unit two lesson one",
+    11022: "English grade ten unit two lesson two",
+    11023: "English grade ten unit two lesson three",
+    11024: "English grade ten unit two lesson four",
+    11031: "English grade ten unit three lesson one",
+    11032: "English grade ten unit three lesson two",
+    11033: "English grade ten unit three lesson three",
+    11034: "English grade ten unit three lesson four",
+    11041: "English grade ten unit four lesson one",
+    11042: "English grade ten unit four lesson two",
+    11043: "English grade ten unit four lesson three",
+    11044: "English grade ten unit four lesson four",
+    11051: "English grade ten unit five lesson one",
+    11052: "English grade ten unit five lesson two",
+    11053: "English grade ten unit five lesson three",
+    11054: "English grade ten unit five lesson four",
+ 
+    21011: "Science grade ten unit one lesson one",
+    21012: "Science grade ten unit one lesson two",
+    21013: "Science grade ten unit one lesson three",
+    21014: "Science grade ten unit one lesson four",
+    21021: "Science grade ten unit two lesson one",
+    21022: "Science grade ten unit two lesson two",
+    21023: "Science grade ten unit two lesson three",
+    21024: "Science grade ten unit two lesson four",
+    21031: "Science grade ten unit three lesson one",
+    21032: "Science grade ten unit three lesson two",
+    21033: "Science grade ten unit three lesson three",
+    21034: "Science grade ten unit three lesson four",
+    21041: "Science grade ten unit four lesson one",
+    21042: "Science grade ten unit four lesson two",
+    21043: "Science grade ten unit four lesson three",
+    21044: "Science grade ten unit four lesson four",
+    21051: "Science grade ten unit five lesson one",
+    21052: "Science grade ten unit five lesson two",
+    21053: "Science grade ten unit five lesson three",
+    21054: "Science grade ten unit five lesson four",
+ 
+    31011: "Math grade ten unit one lesson one",
+    31012: "Math grade ten unit one lesson two",
+    31013: "Math grade ten unit one lesson three",
+    31014: "Math grade ten unit one lesson four",
+    31021: "Math grade ten unit two lesson one",
+    31022: "Math grade ten unit two lesson two",
+    31023: "Math grade ten unit two lesson three",
+    31024: "Math grade ten unit two lesson four",
+    31031: "Math grade ten unit three lesson one",
+    31032: "Math grade ten unit three lesson two",
+    31033: "Math grade ten unit three lesson three",
+    31034: "Math grade ten unit three lesson four",
+    31041: "Math grade ten unit four lesson one",
+    31042: "Math grade ten unit four lesson two",
+    31043: "Math grade ten unit four lesson three",
+    31044: "Math grade ten unit four lesson four",
+    31051: "Math grade ten unit five lesson one",
+    31052: "Math grade ten unit five lesson two",
+    31053: "Math grade ten unit five lesson three",
+    31054: "Math grade ten unit five lesson four",
+   
+    41011: "History grade ten unit one lesson one",
+    41012: "History grade ten unit one lesson two",
+    41013: "History grade ten unit one lesson three",
+    41014: "History grade ten unit one lesson four",
+    41021: "History grade ten unit two lesson one",
+    41022: "History grade ten unit two lesson two",
+    41023: "History grade ten unit two lesson three",
+    41024: "History grade ten unit two lesson four",
+    41031: "History grade ten unit three lesson one",
+    41032: "History grade ten unit three lesson two",
+    41033: "History grade ten unit three lesson three",
+    41034: "History grade ten unit three lesson four",
+    41041: "History grade ten unit four lesson one",
+    41042: "History grade ten unit four lesson two",
+    41043: "History grade ten unit four lesson three",
+    41044: "History grade ten unit four lesson four",
+    41051: "History grade ten unit five lesson one",
+    41052: "History grade ten unit five lesson two",
+    41053: "History grade ten unit five lesson three",
+    41054: "History grade ten unit five lesson four",
+   
+     
+    11111: "English grade eleven unit one lesson one",
+    11112: "English grade eleven unit one lesson two",
+    11113: "English grade eleven unit one lesson three",
+    11114: "English grade eleven unit one lesson four",
+    11121: "English grade eleven unit two lesson one",
+    11122: "English grade eleven unit two lesson two",
+    11123: "English grade eleven unit two lesson three",
+    11124: "English grade eleven unit two lesson four",
+    11131: "English grade eleven unit three lesson one",
+    11132: "English grade eleven unit three lesson two",
+    11133: "English grade eleven unit three lesson three",
+    11134: "English grade eleven unit three lesson four",
+    11141: "English grade eleven unit four lesson one",
+    11142: "English grade eleven unit four lesson two",
+    11143: "English grade eleven unit four lesson three",
+    11144: "English grade eleven unit four lesson four",
+    11151: "English grade eleven unit five lesson one",
+    11152: "English grade eleven unit five lesson two",
+    11153: "English grade eleven unit five lesson three",
+    11154: "English grade eleven unit five lesson four",
+ 
+    21111: "Science grade eleven unit one lesson one",
+    21112: "Science grade eleven unit one lesson two",
+    21113: "Science grade eleven unit one lesson three",
+    21114: "Science grade eleven unit one lesson four",
+    21121: "Science grade eleven unit two lesson one",
+    21122: "Science grade eleven unit two lesson two",
+    21123: "Science grade eleven unit two lesson three",
+    21124: "Science grade eleven unit two lesson four",
+    21131: "Science grade eleven unit three lesson one",
+    21132: "Science grade eleven unit three lesson two",
+    21133: "Science grade eleven unit three lesson three",
+    21134: "Science grade eleven unit three lesson four",
+    21141: "Science grade eleven unit four lesson one",
+    21142: "Science grade eleven unit four lesson two",
+    21143: "Science grade eleven unit four lesson three",
+    21144: "Science grade eleven unit four lesson four",
+    21151: "Science grade eleven unit five lesson one",
+    21152: "Science grade eleven unit five lesson two",
+    21153: "Science grade eleven unit five lesson three",
+    21154: "Science grade eleven unit five lesson four",
+ 
+    31111: "Math grade eleven unit one lesson one",
+    31112: "Math grade eleven unit one lesson two",
+    31113: "Math grade eleven unit one lesson three",
+    31114: "Math grade eleven unit one lesson four",
+    31121: "Math grade eleven unit two lesson one",
+    31122: "Math grade eleven unit two lesson two",
+    31123: "Math grade eleven unit two lesson three",
+    31124: "Math grade eleven unit two lesson four",
+    31131: "Math grade eleven unit three lesson one",
+    31132: "Math grade eleven unit three lesson two",
+    31133: "Math grade eleven unit three lesson three",
+    31134: "Math grade eleven unit three lesson four",
+    31141: "Math grade eleven unit four lesson one",
+    31142: "Math grade eleven unit four lesson two",
+    31143: "Math grade eleven unit four lesson three",
+    31144: "Math grade eleven unit four lesson four",
+    31151: "Math grade eleven unit five lesson one",
+    31152: "Math grade eleven unit five lesson two",
+    31153: "Math grade eleven unit five lesson three",
+    31154: "Math grade eleven unit five lesson four",
+   
+    41111: "History grade eleven unit one lesson one",
+    41112: "History grade eleven unit one lesson two",
+    41113: "History grade eleven unit one lesson three",
+    41114: "History grade eleven unit one lesson four",
+    41121: "History grade eleven unit two lesson one",
+    41122: "History grade eleven unit two lesson two",
+    41123: "History grade eleven unit two lesson three",
+    41124: "History grade eleven unit two lesson four",
+    41131: "History grade eleven unit three lesson one",
+    41132: "History grade eleven unit three lesson two",
+    41133: "History grade eleven unit three lesson three",
+    41134: "History grade eleven unit three lesson four",
+    41141: "History grade eleven unit four lesson one",
+    41142: "History grade eleven unit four lesson two",
+    41143: "History grade eleven unit four lesson three",
+    41144: "History grade eleven unit four lesson four",
+    41151: "History grade eleven unit five lesson one",
+    41152: "History grade eleven unit five lesson two",
+    41153: "History grade eleven unit five lesson three",
+    41154: "History grade eleven unit five lesson four",
+  };
+ 
+  const colors = ["#ff706a","#61f95c","#599aea","#ffed50"]
+  var temp, test, dataPoints, correctans, answers, color, subjecttxt, subject, grade, unit
+    function showPage(pageId, back, lesson) {
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(page => page.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+      if (pageId == "page2" && back != 1){
+        const heading = document.getElementById("page2text");
+        const itema = document.querySelectorAll('.item2');
+        itema.forEach(item => item.style.backgroundColor = color);
+        const itemb = document.querySelectorAll('.item3');
+        itemb.forEach(item => item.style.backgroundColor = color);
+        if (heading) heading.textContent = subjecttxt;
+      }else if (pageId == "page3" && back != 1){
+        const heading = document.getElementById("page3text");
+        if (heading) heading.textContent = "Grade " + grade;
+      }else if (pageId == "page4" && back != 1){
+        const heading = document.getElementById("page4text");
+        if (heading) heading.textContent = subjecttxt + ", Grade " + grade + ", Unit " + unit;
+        console.log(subject, grade, unit)
+      }else if (pageId == "page5"){
+        const heading = document.getElementById("page5text");
+        if (heading) heading.textContent = titles[`${subject}${grade}${unit}${lesson}`];
+        temp = lessons[`${subject}${grade}${unit}${lesson}`]
+        answers = temp.answers
+        correctans = temp.correctans
+        dataPoints = temp.data
+        text = temp.text
+        loadquestion(temp.type ,temp.question ,1)
+        loadquestion(temp.type ,temp.question ,2)
+        loadquestion(temp.type ,temp.question ,3)
+        loadquestion(temp.type ,temp.question ,4)
+        loadquestion(temp.type ,temp.question ,5)
+        loadquestion(temp.type ,temp.question ,6)
+      }
+    }
+    function back(pageId){
+      showPage(pageId,1)
+    }
+    function select(id){
+      const options = ["English","Science","Math","History",8,9,10,11,1,2,3,4,5]
+      if (id <= 3){
+      subject = id+1
+      subjecttxt = options[id]
+      color = colors[id]
+      showPage("page2", 0)
+      }else if(id <= 7){
+      grade = options[id]
+      showPage("page3", 0)
+      }else if(id <= 12){
+      unit = options[id]
+      showPage("page4", 0)
+      }
+    }
+    function answer(a,b){
+    if (b == correctans[a-1]){
+    // future set a point in an array to 1 if correct and set whole array to 0 when new lesson is loaded then check on each answer if whole array is 1s if so lesson done add lesson id to another array to be used to determine completed lessons
+   
+    console.log("correct")
+    var selected = document.getElementById("c"+a+"ans"+b);
+    if (selected) {
+      selected.parentElement.style.backgroundColor = "green"
+      setTimeout(() => {
+      selected.parentElement.style.backgroundColor = "#EEEEEE"
+      }, 500);
+    };
+    }else {
+    console.log("incorrect")
+    var selected = document.getElementById("c"+a+"ans"+b);
+    if (selected) {
+      selected.parentElement.style.backgroundColor = "red"
+      setTimeout(() => {
+      selected.parentElement.style.backgroundColor = "#EEEEEE"
+      }, 500);
+    };
+    }
+    }
+    function loadquestion(type,question,canvasNum){
+    var selected = document.getElementById("c"+canvasNum+"cont");
+    if (selected) selected.style.backgroundColor = "white";
+    selected = document.getElementById("c"+canvasNum+"qus");
+    if (selected) selected.textContent = question[canvasNum-1];
+    selected = document.getElementById("c"+canvasNum+"ans1");
+    if (selected) selected.textContent = answers[canvasNum*3-3];
+    selected = document.getElementById("c"+canvasNum+"ans2");
+    if (selected) selected.textContent = answers[canvasNum*3-2];
+    selected = document.getElementById("c"+canvasNum+"ans3");
+    if (selected) selected.textContent = answers[canvasNum*3-1];
+   
+    const container = document.getElementById("c" + canvasNum + "cont");
+    container.innerHTML = "";
+    if (type[canvasNum-1] == "graph"){
+    console.log("graph")
+      const canvas = document.createElement("canvas");
+      canvas.id = "chart" + canvasNum;
+      container.appendChild(canvas);
+      canvas.style.width = "100%";
+      canvas.style.height = "100%";
+      const slicedPoints = dataPoints.slice((canvasNum - 1) * 4, canvasNum * 4);
+      new Chart(canvas, {
+          type: 'line',
+          data: {
+          datasets: [{
+            label: "Line " + canvasNum,
+            data: slicedPoints,
+            borderColor: "#000",
+            backgroundColor: "rgba(0,0,0,0.1)",
+            borderWidth: 3,
+            tension: 0.3
+          }]
+          },
+          options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            x: {
+            type: "linear",
+            position: "bottom",
+            ticks: {
+              color: "#000",
+              stepSize: 1
+            },
+            beginAtZero: true
+            },
+            y: {
+            ticks: {
+              color: "#000",
+              stepSize: 1
+            },
+            beginAtZero: true
+            }
+          },
+          plugins: {
+            legend: {
+            labels: {
+              color: "#000"
+            }
+            }
+          }
+          },
+          plugins: [{
+          id: 'customCanvasBackgroundColor',
+          beforeDraw: (chart) => {
+            const ctx = chart.canvas.getContext('2d');
+            ctx.save();
+            ctx.globalCompositeOperation = 'destination-over';
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, chart.width, chart.height);
+            ctx.restore();
+          }
+          }]
+        });
+    } else if (type[canvasNum-1] == "table"){
+    console.log("table")
+    const table = document.createElement("table");
+    table.id = "table" + canvasNum;
+    container.appendChild(table);
+    table.style.width = "100%";
+    table.style.height = "100%";
+    table.style.borderCollapse = "collapse";
+    table.style.marginBottom = "20px";
+    table.style.border = "1px solid black";
+    table.style.color = "#000";
+    const slicedPoints = dataPoints.slice((canvasNum - 1) * 4, canvasNum * 4);
+    const thead = document.createElement("thead");
+    const headerRow = document.createElement("tr");
+    ["X", "Y"].forEach((headerText) => {
+      const th = document.createElement("th");
+      th.innerText = headerText;
+      th.style.border = "1px solid black";
+      th.style.padding = "8px";
+      th.style.backgroundColor = "#f0f0f0";
+      headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+    const tbody = document.createElement("tbody");
+    slicedPoints.forEach((point) => {
+      const row = document.createElement("tr");
+      [point.x, point.y].forEach((value) => {
+      const td = document.createElement("td");
+      td.innerText = value;
+      td.style.border = "1px solid black";
+      td.style.padding = "8px";
+      row.appendChild(td);
+      });
+      tbody.appendChild(row);
+    });
+    table.appendChild(tbody);
+    } else if (type[canvasNum-1] == "table"){
+    console.log("table")
+    const table = document.createElement("table");
+    table.id = "table" + canvasNum;
+    container.appendChild(table);
+    table.style.width = "100%";
+    table.style.height = "100%";
+    table.style.borderCollapse = "collapse";
+    table.style.marginBottom = "20px";
+    table.style.border = "1px solid black";
+    table.style.color = "#000";
+    const slicedPoints = dataPoints.slice((canvasNum - 1) * 4, canvasNum * 4);
+    const thead = document.createElement("thead");
+    const headerRow = document.createElement("tr");
+    ["X", "Y"].forEach((headerText) => {
+      const th = document.createElement("th");
+      th.innerText = headerText;
+      th.style.border = "1px solid black";
+      th.style.padding = "8px";
+      th.style.backgroundColor = "#f0f0f0";
+      headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+    const tbody = document.createElement("tbody");
+    slicedPoints.forEach((point) => {
+      const row = document.createElement("tr");
+      [point.x, point.y].forEach((value) => {
+      const td = document.createElement("td");
+      td.innerText = value;
+      td.style.border = "1px solid black";
+      td.style.padding = "8px";
+      row.appendChild(td);
+      });
+      tbody.appendChild(row);
+    });
+    table.appendChild(tbody);
+    }else if (type[canvasNum-1] == "text"){
+    console.log("text")
+      const heading = document.createElement("h1");
+      heading.id = "textbox" + canvasNum;
+      heading.style.color = "#000";
+      heading.style.marginBottom = "20px";
+      heading.style.fontSize = "24px";
+      heading.style.fontWeight = "normal";
+      heading.style.whiteSpace = "pre-wrap";
+      heading.style.margin = "8px";
+      let textContent = text[canvasNum-1];
+      heading.innerText = textContent.trim();
+      container.appendChild(heading);
+    }
+    }
+  </script>
+  </body>
+  </html>
